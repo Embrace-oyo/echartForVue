@@ -1,0 +1,46 @@
+*{
+  padding: 0;
+  margin: 0;
+  ::-webkit-scrollbar {
+    display: none
+  }
+}
+
+html{
+  height: 100%;
+}
+
+body{
+  height: 100%;
+}
+
+.analysis{
+  @titleHeight:40px;
+  background-image: url("../assets/img/out-box.png");
+  background-size: cover;
+  padding: 10px 10px 0 10px;
+  height: calc(100% - 10px);
+  width: calc(100% - 20px);
+  .title{
+    color: white;
+    height: 40px;
+    text-align: center;
+    position: relative;
+    .grade{
+      position: absolute;
+      padding-left: 20px;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+  }
+  .analysis-chart{
+    height: calc(100% - @titleHeight);
+    display: flex;
+    flex-wrap: wrap;
+    .analysis-item{
+      height: 50%;
+      width: 50%;
+    }
+  }
+}
