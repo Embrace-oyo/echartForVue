@@ -2,7 +2,7 @@
     <div class="details">
         <div class="details-left">
             <div class="details-padding">
-
+                <router-link tag="div" to="/row" class="backButton">< 二班</router-link>
                 <div class="class-frame">
                     <div class="class">一班</div>
                     <div class="class">二班</div>
@@ -25,8 +25,6 @@
                 </div>
             </div>
         </div>
-
-
         <div class="details-centre">
             <div class="details-padding">
                 <div class="info">
@@ -82,7 +80,6 @@
                 </div>
             </div>
         </div>
-
         <div class="details-right">
             <div class="details-padding">
                 <div class="details-right-t">
@@ -107,7 +104,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -115,7 +111,6 @@
     import echarts from "echarts";
     import sthMap from '@/assets/json/sth.json'
     import {getDetailsData} from "@/assets/data/detailsData"
-
     let detailsData = getDetailsData();
     export default {
         name: "details1",
@@ -124,10 +119,8 @@
                 detailsData: detailsData,
                 nowSoldier: {}
             }
-
         },
         created() {
-
         },
         mounted() {
             this.nowSoldier = this.detailsData.soldier[0];
@@ -139,7 +132,6 @@
                 this.$chart.loadRadar("单兵综合素质分析", this.nowSoldier.analyze, "analyze");
                 // this.$chart.loadRadar("单兵综合素质分析", this.nowSoldier.analyze, "analyze1");
                 this.$chart.loadCategory("月度考核", this.nowSoldier.behavioural, "behavioural");
-
                 this.goMap(this.nowSoldier.currentPosition)
                 this.$chart.loadRadar("身体综合素质分析", this.nowSoldier.analyze, "analyze2");
                 this.$chart.loadRadar("战术能力综合分析", this.nowSoldier.analyze, "analyze3");
@@ -154,7 +146,6 @@
                 // let _this = this;
                 echarts.registerMap('xx', JSON.stringify(sthMap));
                 let myChart = echarts.init(document.getElementById("analyze1")); //这里是为了获得容器所在位置
-
                 var geoCoordMap = valueMap[0];
                 var data = valueMap[1];
                 var convertData = function (data) {
@@ -171,36 +162,16 @@
                     return res;
                 };
                 let option = {
-                    // backgroundColor: '#020933',
-                    // title: {
-                    //     top: 20,
-                    //     text: '旅部-地图测试',
-                    //     subtext: '',
-                    //     x: 'center',
-                    //     textStyle: {
-                    //         color: '#ccc'
-                    //     }
-                    // },
-
                     tooltip: {
                         trigger: 'item',
-                        formatter: function () {
-                            //   if(typeof(params.value)[2] == "undefined"){
-                            //   	return params.name + ' : ' + params.value;
-                            //   }else{
-                            //   	return params.name + ' : ' + params.value[2];
-                            //   }
-                        }
                     },
-                    /*   legend: {
-                           orient: 'vertical',
-                           y: 'bottom',
-                           x: 'right',
-                            data:['pm2.5'],
-                           textStyle: {
-                               color: '#fff'
-                           }
-                       },*/
+                    grid: {
+                        top: 'middle',
+                        left: '10%',
+                        right: '10%',
+                        height: '60%',
+                        containLabel: true
+                    },
                     legend: {
                         orient: 'vertical',
                         y: 'bottom',
@@ -219,20 +190,6 @@
                         text: ['高', '低'], // 文本，默认为数值文本
                         calculable: true,
                         seriesIndex: [1],
-                        inRange: {
-                            // color: ['#3B5077', '#031525'] // 蓝黑
-                            // color: ['#ffc0cb', '#800080'] // 红紫
-                            // color: ['#3C3B3F', '#605C3C'] // 黑绿
-                            //color: ['#0f0c29', '#302b63', '#24243e'] // 黑紫黑
-                            //color: ['#23074d', '#cc5333'] // 紫红
-                            // color: ['#00467F', '#A5CC82'] // 蓝绿
-                            // color: ['#1488CC', '#2B32B2'] // 浅蓝
-                            // color: ['#00467F', '#A5CC82'] // 蓝绿
-                            // color: ['#00467F', '#A5CC82'] // 蓝绿
-                            // color: ['#00467F', '#A5CC82'] // 蓝绿
-                            // color: ['#00467F', '#A5CC82'] // 蓝绿
-
-                        }
                     },
                     geo: {
                         show: true,
@@ -361,7 +318,9 @@
 <style lang="less">
 
     .details {
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
         display: flex;
         color: #fff;
         @detailsPadding: 10px;
@@ -382,9 +341,18 @@
             height: 100%;
             width: 25%;
             /*border: 1px aqua solid;*/
+            .backButton{
+                float: left;
+                color: #1de9b6;
+                font-size: 0.10417rem;
+                cursor: pointer;
+                margin-top: 10px;
+                margin-left: 10px;
+            }
             .class-frame {
                 display: flex;
                 justify-content: flex-start;
+                margin-left: 120px;
                 .class {
                     display: flex;
                     justify-content: center;
@@ -564,7 +532,7 @@
             }
             .behavioural {
                 margin-top: 3%;
-                height: 40%;
+                height: 400px;
                 /*border: 1px #ff001e solid;*/
                 background-image: url("~@/assets/img/bg-details-behavioural.png");
                 background-size: cover;

@@ -37,8 +37,18 @@ export default new Router({
 		},
 		{
 			path: '/details',
-			name: 'details',
+			name: '详情',
 			component: () => import('@/views/pages/details.vue')
+		},
+		{
+			path: '/baiduMap',
+			name: 'echarts_baiduMap',
+			component: () => import('@/views/pages/baiduMap.vue')
+		},
+		{
+			path: '/mapBox',
+			name: 'echarts_mapBox',
+			component: () => import('@/views/pages/mapBox.vue')
 		},
 
 	]

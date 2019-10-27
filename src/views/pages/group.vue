@@ -1,7 +1,7 @@
 <template>
 	<div class="brigade">
 		<div class="title">
-			<router-link tag="div" to="/brigade" class="backButton">77旅 > 二团</router-link>
+			<router-link tag="div" to="/brigade" class="backButton">旅 > 二团</router-link>
 			<div class="left"></div>
 			<span><i></i>士兵全息大数据管理与分析系统</span>
 			<div class="right"></div>
