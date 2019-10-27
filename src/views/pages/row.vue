@@ -1,6 +1,7 @@
 <template>
 	<div class="brigade">
 		<div class="title">
+			<router-link tag="div" to="/commander" class="backButton"> < 二排</router-link>
 			<div class="left"></div>
 			<span><i></i>士兵全息大数据管理与分析系统</span>
 			<div class="right"></div>
@@ -237,7 +238,7 @@
 					},
 					xAxis: {
 						type: 'category',
-						data: ['体能', '设计', '障碍', '技术', '通讯'],
+						data: ['体能', '射击', '障碍', '技术', '通讯'],
 						axisLine: {
 							show: true,
 							lineStyle: {
@@ -409,7 +410,7 @@
 				let data0 = option.series[0].data;
 				let data1 = option.series[1].data;
 				let data2 = option.series[2].data;
-				let axisData = ['体能', '设计', '障碍', '技术', '通讯']
+				let axisData = ['体能', '射击', '障碍', '技术', '通讯']
 				let num = 0;
 				setInterval(() => {
 					data0.shift();
@@ -870,7 +871,7 @@
 						{
 							type: 'category',
 							boundaryGap: false,
-							data: ['体能', '设计', '障碍', '技术', '通讯'],
+							data: ['体能', '射击', '障碍', '技术', '通讯'],
 							axisLine: {
 								lineStyle: {
 									color: '#212222'
@@ -1205,7 +1206,7 @@
 				let option = {
 					title : {
 						text: '总人数',
-						subtext: '7000',
+						subtext: '10',
 						textStyle:{
 							color: '#00a0e9',
 							fontSize: 16

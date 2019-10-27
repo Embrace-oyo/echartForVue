@@ -1,6 +1,7 @@
 <template>
 	<div class="brigade">
 		<div class="title">
+			<router-link tag="div" to="/group" class="backButton">二团 > 二营</router-link>
 			<div class="left"></div>
 			<span><i></i>士兵全息大数据管理与分析系统</span>
 			<div class="right"></div>
@@ -104,8 +105,7 @@
 </template>
 
 <script>
-	import 'echarts/map/js/china.js';
-	import data from '@/assets/json/data-1559032707973-kPCDcrc0f.json'
+	import shiquJson from '@/assets/json/shiqu.json'
 	export default {
 		name: "camp",
 		methods: {
@@ -231,7 +231,7 @@
 					},
 					xAxis: {
 						type: 'category',
-						data: ['体能', '设计', '障碍', '技术', '通讯'],
+						data: ['体能', '射击', '障碍', '技术', '通讯'],
 						axisLine: {
 							show: true,
 							lineStyle: {
@@ -403,7 +403,7 @@
 				let data0 = option.series[0].data;
 				let data1 = option.series[1].data;
 				let data2 = option.series[2].data;
-				let axisData = ['体能', '设计', '障碍', '技术', '通讯']
+				let axisData = ['体能', '射击', '障碍', '技术', '通讯']
 				let num = 0;
 				setInterval(() => {
 					data0.shift();
@@ -864,7 +864,7 @@
 						{
 							type: 'category',
 							boundaryGap: false,
-							data: ['体能', '设计', '障碍', '技术', '通讯'],
+							data: ['体能', '射击', '障碍', '技术', '通讯'],
 							axisLine: {
 								lineStyle: {
 									color: '#212222'
@@ -1199,7 +1199,7 @@
 				let option = {
 					title : {
 						text: '总人数',
-						subtext: '7000',
+						subtext: '500',
 						textStyle:{
 							color: '#00a0e9',
 							fontSize: 16
@@ -1309,393 +1309,182 @@
 				myChart.setOption(option);
 			},
 			drawMap(){
-				let myChart = this.$echarts.init(document.getElementById("maps"));
-			  let colors = [
-				  ["#1DE9B6", "#F46E36", "#04B9FF", "#5DBD32", "#FFC809", "#FB95D5", "#BDA29A", "#6E7074", "#546570", "#C4CCD3"],
-				  ["#37A2DA", "#67E0E3", "#32C5E9", "#9FE6B8", "#FFDB5C", "#FF9F7F", "#FB7293", "#E062AE", "#E690D1", "#E7BCF3", "#9D96F5", "#8378EA", "#8378EA"],
-				  ["#DD6B66", "#759AA0", "#E69D87", "#8DC1A9", "#EA7E53", "#EEDD78", "#73A373", "#73B9BC", "#7289AB", "#91CA8C", "#F49F42"],
-			  ];
-		    let colorIndex = 0;
-			  let geoCoordMap = {
-				  '北碚': [106.50,29.81],
-				  '城口': [108.6520475,31.90676506],
-				  '大足': [105.7692868,29.65392091],
-				  '垫江': [107.4004904,30.24903189],
-				  '丰都': [107.7461781,29.91492542],
-				  '奉节': [109.3758974,30.98202119],
-				  '合川': [106.2833096,30.09766756],
-				  '江北': [106.6214893,29.64821182],
-				  '江津': [106.2647885,28.98483627],
-				  '开州': [108.1818518,31.29466521],
-				  '南岸': [106.6379653,29.47704825],
-				  '南川': [107.1406799,29.12047319],
-				  '彭水': [108.2573507,29.36444557],
-				  '綦南': [106.8036647,28.96872774],
-				  '黔江': [108.7559876,29.44290625],
-				  '石柱': [108.2438988,30.07512144],
-				  '市区': [106.4377397,29.52648606],
-				  '铜梁': [106.0616035,29.81036286],
-				  '潼南': [105.8116920, 30.13795513],
-				  '万州': [108.0828876,30.73353669],
-				  '巫山': [109.8779184,31.09568937],
-				  '巫溪': [109.2970739,31.48090521],
-				  '武隆': [107.6831317,29.36831708],
-				  '秀山': [108.9997005,28.49462861],
-				  '永川': [105.8347961,29.41042605],
-				  '酉阳': [108.7911679,28.88330557],
-				  '云阳': [108.7533957,30.96025875],
-				  '长寿': [107.24,29.95],
-				  '忠县': [107.9279014,30.33522658],
-				  '川东': [107.3488646,29.68233099]
-			  };
-			  
-			  let voltageLevel = ["全部", "35kV", "110kV", "220kV", "500kV"];
-			  let mapData = [
-				  [], [], [], [], [], [], [],[], [], [], [],[], [], [], [],
-				  [], [], [], [], [], [], [], [], [],
-				  [], [], [], [], [], [], [], [], [], [], [], []
-			  ];
-			  /*柱子Y名称*/
-			  let categoryData = [];
-			  let barData = [];
-			  for (var key in geoCoordMap) {
-				  categoryData.push(key);
-				  mapData[0].push({
-					  "year": 2014,
-					  "name": key,
-					  "value": randomNum(100, 300)
-				  });
-				  mapData[1].push({
-					  "year": 2015,
-					  "name": key,
-					  "value": randomNum(100, 300)
-				  });
-				  mapData[2].push({
-					  "year": 2016,
-					  "name": key,
-					  "value": randomNum(100, 300)
-				  });
-				  mapData[3].push({
-					  "year": 2017,
-					  "name": key,
-					  "value": randomNum(100, 300)
-				  });
-				  mapData[4].push({
-					  "year": 2018,
-					  "name": key,
-					  "value": randomNum(100, 300)
-				  });
-				  mapData[5].push({
-					  "year": 2019,
-					  "name": key,
-					  "value": randomNum(100, 300)
-				  });
-			  }
-			  for (var i = 0; i < mapData.length; i++) {
-				  barData.push([]);
-				  for (var j = 0; j < mapData[i].length; j++) {
-					  barData[i].push(mapData[i][j].value)
-				  }
-			  }
-		    this.$echarts.registerMap('xianyang3', data);
-			  let convertData = function(data) {
-				  var res = [];
-				  for (var i = 0; i < data.length; i++) {
-					  var geoCoord = geoCoordMap[data[i].name];
-					  if (geoCoord) {
-						  res.push({
-							  name: data[i].name,
-							  value: geoCoord.concat(data[i].value)
-						  });
-					  }
-				  }
-				  return res;
-			  };
-		    let convertToLineData = function(data) {
-			  var res = [];
-			  for (var i = 0; i < data.length; i++) {
-				  var dataItem = data[i];
-				  var fromCoord = geoCoordMap[dataItem.name];
-				  var toCoord = [106.55, 29.57]; //市区
-				  if (fromCoord && toCoord) {
-					  res.push([{
-						  coord: fromCoord,
-						  value: dataItem.value
-					  }, {
-						  coord: toCoord,
-					  }]);
-				  }
-			  }
-			  return res;
-		  };
-		    let optionXyMap01 = {
-					timeline: {
-						show: false,
-						data: voltageLevel,
-						axisType: 'category',
-						autoPlay: true,
-						playInterval: 3000,
-						left: '10%',
-						right: '10%',
-						bottom: '3%',
-						width: '80%',
-						//  height: null,
-						label: {
-							normal: {
-								textStyle: {
-									color: '#ddd'
-								}
-							},
-							emphasis: {
-								textStyle: {
-									color: '#fff'
-								}
-							}
-						},
-						symbolSize: 10,
-						lineStyle: {
-							color: '#555'
-						},
-						checkpointStyle: {
-							borderColor: '#777',
-							borderWidth: 2
-						},
-						controlStyle: {
-							showNextBtn: true,
-							showPrevBtn: true,
-							normal: {
-								color: '#666',
-								borderColor: '#666'
-							},
-							emphasis: {
-								color: '#aaa',
-								borderColor: '#aaa'
-							}
-						},
-					
-					},
-					baseOption: {
-						animation: true,
-						animationDuration: 1000,
-						animationEasing: 'cubicInOut',
-						animationDurationUpdate: 1000,
-						animationEasingUpdate: 'cubicInOut',
-						grid: {
-							right: '1%',
-							top: '15%',
-							bottom: '10%',
-							width: '20%'
-						},
-						tooltip: {
-							trigger: 'axis', // hover触发器
-							axisPointer: { // 坐标轴指示器，坐标轴触发有效
-								type: 'shadow', // 默认为直线，可选为：'line' | 'shadow'
-								shadowStyle: {
-									color: 'rgba(150,150,150,0.1)' //hover颜色
-								}
-							}
-						},
-						geo: {
-							show: true,
-							map: 'xianyang3',
-							roam: true,
-							zoom: 1,
-							center: [108.5, 30],  //中心点
-							label: {
-								emphasis: {
-									show: false
-								}
-							},
-							itemStyle: {
-								normal: {
-									borderColor: 'rgba(147, 235, 248, 1)',
-									borderWidth: 1,
-									areaColor: {
-										type: 'radial',
-										x: 0.5,
-										y: 0.5,
-										r: 0.5,
-										colorStops: [{
-											offset: 0,
-											color: 'rgba(147, 235, 248, 0)' // 0% 处的颜色
-										}, {
-											offset: 1,
-											color: 'rgba(147, 235, 248, .2)' // 100% 处的颜色
-										}],
-										globalCoord: false // 缺省为 false
-									},
-									// shadowColor: 'rgba(128, 217, 248, 1)',
-									// shadowColor: 'rgba(255, 255, 255, 1)',
-									// shadowOffsetX: -2,
-									// shadowOffsetY: 2,
-									// shadowBlur: 10
-								},
-								emphasis: {
-									areaColor: '#389BB7',
-									borderWidth: 0
-								}
-							}
-						},
-					},
-					options: []
+				this.$echarts.registerMap('石渠', shiquJson);
+				let myChart = this.$echarts.init(document.getElementById('maps'));
+				let geoCoordMap = {
+					'二营': [98.13075,33.003384],
+					'一连': [97.92378,33.993723],
+					'二连': [97.51444,32.871512],
+					'三连': [98.719463,33.173746],
+					'指挥班': [98.719463,33.173746],
+					'后勤保障班': [98.903436,32.669442],
 				};
-			  for (var n = 0; n < voltageLevel.length; n++) {
-				  optionXyMap01.options.push({
-					  backgroundColor: 'rgba(0,0,0,0)',
-					  xAxis: {
-						  type: 'value',
-						  scale: true,
-						  position: 'top',
-						  min: 0,
-						  boundaryGap: false,
-						  splitLine: {
-							  show: false
-						  },
-						  axisLine: {
-							  show: false
-						  },
-						  axisTick: {
-							  show: false
-						  },
-						  axisLabel: {
-						  	show: false,
-							  margin: 2,
-							  textStyle: {
-								  color: '#aaa'
-							  }
-						  },
-					  },
-					  yAxis: {
-						  type: 'category',
-						  //  name: 'TOP 20',
-						  nameGap: 16,
-						  axisLine: {
-							  show: true,
-							  lineStyle: {
-								  color: '#ddd'
-							  }
-						  },
-						  axisTick: {
-							  show: false,
-							  lineStyle: {
-								  color: '#ddd'
-							  }
-						  },
-						  axisLabel: {
-							  interval: 0,
-							  textStyle: {
-								  color: '#ddd'
-							  }
-						  },
-						  data: categoryData
-					  },
-					  series: [
-					  	{
-							  //文字和标志
-							  name: 'light',
-							  type: 'scatter',
-							  coordinateSystem: 'geo',
-							  data: convertData(mapData[n]),
-							  symbolSize: function(val) {
-								  return val[2] / 10;
-							  },
-							  itemStyle: {
-								  normal: {
-									  color: colors[colorIndex][n]
-								  }
-							  }
-					    },
-						  {
-							  type: 'map',
-							  map: 'xianyang3',
-							  geoIndex: 0,
-							  aspectScale: 0.75, //长宽比
-							  showLegendSymbol: false, // 存在legend时显示
-							  label: {
-								  normal: {
-									  show: false
-								  },
-								  emphasis: {
-									  show: false,
-									  textStyle: {
-										  color: '#fff'
-									  }
-								  }
-							  },
-							  roam: true,
-							  itemStyle: {
-								  normal: {
-									  areaColor: '#031525',
-									  borderColor: '#FFFFFF',
-								  },
-								  emphasis: {
-									  areaColor: '#2B91B7'
-								  }
-							  },
-							  animation: false,
-							  data: mapData
-						  },
-						  {
-							  //  name: 'Top 5',
-							  type: 'effectScatter',
-							  coordinateSystem: 'geo',
-							  data: convertData(mapData[n].sort(function(a, b) {
-								  return b.value - a.value;
-							  }).slice(0, 20)),
-							  symbolSize: function(val) {
-								  return val[2] / 100;
-							  },
-							  showEffectOn: 'render',
-							  rippleEffect: {
-								  brushType: 'stroke'
-							  },
-							  hoverAnimation: true,
-							  label: {
-								  normal: {
-									  formatter: '{b}',
-									  position: 'right',
-									  show: true
-								  }
-							  },
-							  itemStyle: {
-								  normal: {
-									  color: colors[colorIndex][n],
-									  shadowBlur: 5,
-									  shadowColor: colors[colorIndex][n]
-								  }
-							  },
-							  zlevel: 1
-						  },
-						  {
-							  zlevel: 1.5,
-							  type: 'bar',
-							  symbol: 'none',
-							  itemStyle: {
-								  normal: {
-									  color: colors[colorIndex][n]
-								  }
-							  },
-							  data: barData[n]
-						  }
-					  ]
-				  })
-			  }
-		    myChart.setOption(optionXyMap01);
-			  function randomNum(minNum, maxNum) {
-				  let res = null;
-				  switch (arguments.length) {
-					  case 1:
-						  res = parseInt(Math.random() * minNum + 1, 10);
-						  break;
-					  case 2:
-						  res=  parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
-						  break;
-					  default:
-						  res =  0;
-						  break;
-				  }
-				  return res;
-			  }
+				let CDCData = [
+					[{
+						name: '二营'
+					}, {
+						name: '二营',
+						value: 200
+					}],
+					[{
+						name: '二营'
+					}, {
+						name: '一连',
+						value: 100
+					}],
+					[{
+						name: '二营'
+					}, {
+						name: '二连',
+						value: 100
+					}],
+					[{
+						name: '二营'
+					}, {
+						name: '三连',
+						value: 100
+					}],
+					[{
+						name: '二营'
+					}, {
+						name: '指挥班',
+						value: 100
+					}],
+					[{
+						name: '二营'
+					}, {
+						name: '后勤保障班',
+						value: 100
+					}],
+				];
+				let planePath = 'path://M.6,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705';
+				let convertData = function(data) {
+					var res = [];
+					for (var i = 0; i < data.length; i++) {
+						var dataItem = data[i];
+						var fromCoord = geoCoordMap[dataItem[0].name];
+						var toCoord = geoCoordMap[dataItem[1].name];
+						if (fromCoord && toCoord) {
+							res.push([{
+								coord: fromCoord
+							}, {
+								coord: toCoord
+							}]);
+						}
+					}
+					return res;
+				};
+				let color = ['#a6c84c'];
+				let series = [];
+				[['二营', CDCData]].forEach(function(item, i) {
+					series.push(
+							{
+								name: item[0],
+								type: 'lines',
+								zlevel: 1,
+								effect: {
+									show: true,
+									period: 6,
+									trailLength: 0.7,
+									color: '#fff',
+									symbolSize: 3
+								},
+								lineStyle: {
+									normal: {
+										color: color[i],
+										width: 0,
+										curveness: 0.2
+									}
+								},
+								data: convertData(item[1])
+							},
+							{
+								name: item[0],
+								type: 'lines',
+								zlevel: 2,
+								effect: {
+									show: true,
+									period: 6,
+									trailLength: 0,
+									symbol: planePath,
+									symbolSize: 15
+								},
+								lineStyle: {
+									normal: {
+										color: color[i],
+										width: 1,
+										opacity: 0.4,
+										curveness: 0.2
+									}
+								},
+								data: convertData(item[1])},
+							{
+								name: item[0],
+								type: 'effectScatter',
+								coordinateSystem: 'geo',
+								zlevel: 2,
+								rippleEffect: {
+									brushType: 'stroke'
+								},
+								label: {
+									normal: {
+										show: true,
+										position: 'right',
+										formatter: '{b}'
+									}
+								},
+								symbolSize: function(val) {
+									return val[2] / 8;
+								},
+								itemStyle: {
+									normal: {
+										color: color[i]
+									}
+								},
+								data: item[1].map(function(dataItem) {
+									return {
+										name: dataItem[1].name,
+										value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
+									};
+								})
+							}
+					);
+				});
+				let option = {
+					tooltip: {
+						trigger: 'item'
+					},
+					legend: {
+						orient: 'vertical',
+						top: 'bottom',
+						left: 'right',
+						data: ['北京 Top10', '上海 Top10', '广州 Top10'],
+						textStyle: {
+							color: '#fff'
+						},
+						selectedMode: 'single'
+					},
+					geo: {
+						map: '石渠',
+						label: {
+							emphasis: {
+								show: false
+							}
+						},
+						roam: true,
+						itemStyle: {
+							normal: {
+								areaColor: '#132937',
+								borderColor: '#0692a4'
+							},
+							emphasis: {
+								areaColor: '#0b1c2d'
+							}
+						}
+					},
+					series: series
+				};
+				myChart.setOption(option);
 			},
 		},
 		mounted() {
