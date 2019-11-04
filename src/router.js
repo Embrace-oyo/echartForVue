@@ -50,6 +50,11 @@ export default new Router({
 			name: 'echarts_mapBox',
 			component: () => import('@/views/pages/mapBox.vue')
 		},
+		{
+			path: '/newIndex',
+			name: 'newIndex',
+			component: () => import('@/views/pages/newIndex.vue')
+		},
 
 	]
 })

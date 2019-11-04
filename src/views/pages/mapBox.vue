@@ -202,8 +202,8 @@
                         bearing: 0,
                         // 海拔的缩放
                         altitudeScale: 3e2,
-                        //style: 'mapbox://styles/mapbox/satellite-v9',
-                        style: 'mapbox://styles/mapbox/cjaudgl840gn32rnrepcb9b9g',
+                        style: 'mapbox://styles/mapbox/satellite-v9',
+                        //style: 'mapbox://styles/mapbox/dark-v10',
                     },
                     series: series
                 }
