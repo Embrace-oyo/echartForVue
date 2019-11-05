@@ -29,6 +29,7 @@
                 </div>
             </div>
             <div class="centerSide">
+                <div class="toogle"></div>
                 <div id="maps"></div>
                 <div class="infoBox">
                     <i></i>
@@ -1450,7 +1451,7 @@
                 };
                 myChart.setOption(option);
             },
-            drawBaidu(){
+            drawMapbox1(){
                 let myChart = this.$echarts.init(document.getElementById("maps"));
                 let geoCoordMap = {
                     '77旅': [103.9526, 30.7617],
@@ -1665,7 +1666,7 @@
                     defaultLanguage: 'zh'
                 }));
             },
-            drawBaidu2(){
+            drawMapbox2(){
                 let myChart = this.$echarts.init(document.getElementById("maps"));
                 let geoCoordMap = {
                     '旅': [-74.0066, 40.7135],
@@ -1855,7 +1856,169 @@
                         }
                     });
                 });
-            }
+            },
+            drawGeo3d(){
+                let myChart = this.$echarts.init(document.getElementById('maps'));
+                let planePath = 'path://M.6,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705';
+                let series = [];
+                let geoCoordMap = {
+                    '77旅': [103.9526, 30.7617],
+                    '一营': [105.4578,28.493],
+                    '二营': [99.9207,31.0803],
+                    '三营': [107.6111,31.333],
+                    '通讯营': [101.9641,27.6746],
+                    '后勤保障营': [102.4805,32.4536],
+                    '侦查营': [105.6885,32.2284],
+                };
+                let CDCData = [
+                    [{
+                        name: '77旅'
+                    }, {
+                        name: '77旅',
+                        value: 200
+                    }],
+                    [{
+                        name: '77旅'
+                    }, {
+                        name: '一营',
+                        value: 200
+                    }],
+                    [{
+                        name: '77旅'
+                    }, {
+                        name: '二营',
+                        value: 200
+                    }],
+                    [{
+                        name: '77旅'
+                    }, {
+                        name: '三营',
+                        value: 200
+                    }],
+                    [{
+                        name: '77旅'
+                    }, {
+                        name: '通讯营',
+                        value: 200
+                    }],
+                    [{
+                        name: '77旅'
+                    }, {
+                        name: '后勤保障营',
+                        value: 200
+                    }],
+                    [{
+                        name: '77旅'
+                    }, {
+                        name: '侦查营',
+                        value: 200
+                    }],
+                ];
+                let convertData = function(data) {
+                    var res = [];
+                    for (var i = 0; i < data.length; i++) {
+                        var dataItem = data[i];
+                        var fromCoord = geoCoordMap[dataItem[0].name];
+                        var toCoord = geoCoordMap[dataItem[1].name];
+                        if (fromCoord && toCoord) {
+                            res.push([{
+                                coord: fromCoord
+                            }, {
+                                coord: toCoord
+                            }]);
+                        }
+                    }
+                    return res;
+                };
+                [['77旅', CDCData]].forEach(function(item, i) {
+                    series.push(
+                        {
+                            name: item[0],
+                            type: 'scatter3D',
+                            coordinateSystem: 'geo3D',
+                            symbol: 'pin',
+                            symbolSize: 30,
+                            label:{
+                                show: true,
+                                formatter:'{b}',
+                                distance: 0,
+                                textStyle:{
+                                    color:'#fff',
+                                    backgroundColor:'rgba(85,255,38, .5)',
+                                }
+                            },
+                            rippleEffect: {
+                                brushType: 'stroke',
+                                color: 'rgba(58,255,0,0.4)'
+                            },
+                            itemStyle: {
+                                color: 'rgba(85,255,38, .5)',
+                                borderColor: 'rgba(85,255,38, .2)',
+                                opacity: .5,
+                                borderWidth: 1,
+                            },
+                            animation: true,
+                            animationDurationUpdate: 500,
+                            animationEasingUpdate: 'cubicOut ',
+                            data: item[1].map(function(dataItem) {
+                                return {
+                                    name: dataItem[1].name,
+                                    value: geoCoordMap[dataItem[1].name].concat([210])
+                                };
+                            })
+                        },
+                        {
+                            type: 'bar3D',
+                            coordinateSystem: 'geo3D',
+                            barSize: 0.1,
+                            minHeight: 13,
+                            itemStyle: {
+                                color: 'rgba(85,255,38, 1)',
+                                opacity: .5,
+                            },
+                            shading: 'lambert',
+                            data: item[1].map(function(dataItem) {
+                                return {
+                                    name: dataItem[1].name,
+                                    value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
+                                };
+                            }),
+                        }
+                    );
+                });
+                let option = {
+                    geo3D:{
+                        map: '四川',
+                        boxHeight: 20,
+                        regionHeight: 6,
+                        instancing: true,
+                        itemStyle: {
+                            color: 'rgba(56, 141, 120, 0.2)',
+                            borderColor: 'rgba(56, 141, 120, 0.1)',
+                            opacity: 1,
+                            borderWidth: 1,
+                        },
+                        emphasis: {
+                            label: {
+                              show: false,
+                            },
+                            itemStyle: {
+                                color: 'rgba(56, 141, 120, 0.5)',
+                                borderColor: 'rgba(56, 141, 120, 0.5)',
+                                opacity: 1,
+                                borderWidth: 1,
+                            }
+                        },
+                        viewControl: {
+                            autoRotate: true,
+                            distance: 80,
+                            alpha: 30,
+                        }
+                    },
+                    series: series,
+                }
+                myChart.setOption(option);
+            },
         },
         mounted() {
             this.drawEchart1();
@@ -1869,94 +2032,14 @@
             this.drawEchart9()
             this.drawPie1();
             this.drawPie2();
-            //this.drawMap();
-            this.drawBaidu();
-            //this.drawBaidu2();
+/*            this.drawMap();
+            this.drawMapbox1();
+            this.drawMapbox2();*/
+            this.drawGeo3d();
         }
     }
 </script>
 
 <style scoped lang="less">
-    @import "~@/assets/css/css.less";
-    .leftSide, .rightSide{
-        background-color: rgba(56, 141, 120, 0.2);
-        .box1, .box2, .box3, .box4, .box5, .box6, .box7, .box8, .box9{
-            width: 100%;
-            height: 300px;
-            margin-top: 10px;
-            span{
-                font-size: 20px;
-                text-align: center;
-                color: #81939b;
-                font-weight: bold;
-                text-align: center;
-                width: 100%;
-                display: block;
-                position: absolute;
-            }
-        }
-        #echart1,#echart2, #echart3, #echart4, #echart5{
-            margin-top: 0;
-        }
-    }
-    .brigade .content .centerSide #maps{
-        width: 100%;
-        height: 68%;
-        margin-top: 20px;
-    }
-    .infoBox{
-        img{
-            position: absolute;
-            width: auto;
-            height: 100%;
-            right: 30px;
-            z-index: 10;
-            top: 0;
-        }
-    }
-    .mask{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 20px;
-        left: 0;
-        z-index: 999;
-        background-image: url("~@/assets/img/mask.png");
-        background-size: 1100px 68%;
-        background-repeat: no-repeat;
-        pointer-events:none;
-    }
-    .animate{
-        position: absolute;
-        width: 200px;
-        height: 200px;
-        left: 20px;
-        bottom: 220px;
-        z-index: 999;
-        background-image: url("~@/assets/img/animate.png");
-        background-size: contain;
-        background-repeat: no-repeat;
-        pointer-events:none;
-        z-index: 999999;
-    }
-    .brigade .content .centerSide #pie1{
-        position: absolute;
-        width: 439px;
-        height: 136px;
-        border: none;
-        background-color: rgba(0, 0, 0, 0);
-        top: 0;
-        left: 25%;
-        z-index: 2;
-    }
-    .brigade .content .centerSide #pie2{
-        position: absolute;
-        width: 439px;
-        height: 136px;
-        border: none;
-        background-color: rgba(0, 0, 0, 0);
-        top: 0;
-        left: 50%;
-        z-index: 2;
-    }
+    @import "~@/assets/css/newLess.less";
 </style>

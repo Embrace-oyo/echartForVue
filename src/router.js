@@ -55,6 +55,11 @@ export default new Router({
 			name: 'newIndex',
 			component: () => import('@/views/pages/newIndex.vue')
 		},
+		{
+			path: '/body',
+			name: 'body',
+			component: () => import('@/views/pages/body.vue')
+		},
 
 	]
 })
