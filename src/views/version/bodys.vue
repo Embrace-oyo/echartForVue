@@ -309,7 +309,7 @@
 													data: randomData
 											}]
 									});
-							}, 2000)
+							}, 1000)
 					},
 					xin2(){
 							let myChart = this.$echarts.init(document.getElementById("xin2"));
@@ -380,7 +380,7 @@
 													data: randomData
 											}]
 									});
-							}, 2000)
+							}, 1000)
 					},
 					xin3(){
 							let myChart = this.$echarts.init(document.getElementById("xin3"));
@@ -451,25 +451,8 @@
 													data: randomData
 											}]
 									});
-							}, 2000)
-					},
-			    getTime(){
-							let date = new Date();
-							let year = date.getFullYear();
-							let month = date.getMonth() + 1;
-							let thisDate = date.getDate();
-							let day = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")[date.getDay()];
-							let hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
-							let minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
-							let second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
-							this.hour = hour;
-							this.minute = minute;
-							this.second = second;
-							let that = this;
-							setTimeout(() => {
-								that.getTime()
 							}, 1000)
-			    },
+					},
 			    list(){
 							let myChart = this.$echarts.init(document.getElementById("list"));
 							let option = {
@@ -546,8 +529,25 @@
 								option.xAxis[0].data.push(axisData);
 								myChart.setOption(option);
 								console.log(axisData, (Math.random() * 10 + 5).toFixed(1) - 0);
-							}, 2100);
-			    }
+							}, 1500);
+			    },
+					getTime(){
+						let date = new Date();
+						let year = date.getFullYear();
+						let month = date.getMonth() + 1;
+						let thisDate = date.getDate();
+						let day = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")[date.getDay()];
+						let hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+						let minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+						let second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+						this.hour = hour;
+						this.minute = minute;
+						this.second = second;
+						let that = this;
+						setTimeout(() => {
+							that.getTime()
+						}, 1000)
+					},
 		    },
 		    mounted() {
         		this.xin1();
