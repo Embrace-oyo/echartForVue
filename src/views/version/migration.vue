@@ -469,7 +469,7 @@
                     },
                     baseOption: {
                         title: {
-                            text: '士兵外出趋势图',
+                            text: '士兵外出趋势',
                             left: 'center',
                             top: 50,
                             textStyle: {
