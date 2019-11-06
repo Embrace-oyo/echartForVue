@@ -6,131 +6,129 @@
             <div class="right"></div>
         </div>
         <div class="content">
-            <div class="leftSide">
-                <div class="box1">
-                    <span>全军横向分析</span>
-                    <div id="echart1"></div>
+        <div class="leftSide">
+            <div class="box1">
+                <span>全军横向分析</span>
+                <div id="echart1"></div>
+            </div>
+            <div class="box2">
+                <span>技战术水平分析</span>
+                <div id="echart2"></div>
+            </div>
+            <div class="box3">
+                <span>健康状态分析</span>
+                <div id="echart3"></div>
+            </div>
+            <div class="box4">
+                <span>政治思想分析</span>
+                <div id="echart4"></div>
+            </div>
+            <div class="box5">
+                <span>训练水平分析</span>
+                <div id="echart5"></div>
+            </div>
+        </div>
+        <div class="centerSide">
+            <div class="toogle"></div>
+            <div id="maps"></div>
+            <div class="infoBox">
+                <i></i>
+                <img src="~@/assets/img/animate2.png" alt="">
+                <p>xxx训练、演习等等正在进行</p>
+                <p style="color: #ff4040">军营所在地出现传染病</p>
+                <div id="pie1">
+                    <div id="drawPie1"></div>
+                    <span></span>
                 </div>
-                <div class="box2">
-                    <span>技战术水平分析</span>
-                    <div id="echart2"></div>
-                </div>
-                <div class="box3">
-                    <span>健康状态分析</span>
-                    <div id="echart3"></div>
-                </div>
-                <div class="box4">
-                    <span>政治思想分析</span>
-                    <div id="echart4"></div>
-                </div>
-                <div class="box5">
-                    <span>训练水平分析</span>
-                    <div id="echart5"></div>
+                <div id="pie2">
+                    <div id="drawPie2"></div>
+                    <span></span>
                 </div>
             </div>
-            <div class="centerSide">
-                <div class="toogle"></div>
-                <div id="maps"></div>
-                <div class="infoBox">
-                    <i></i>
-                    <img src="~@/assets/img/animate2.png" alt="">
-                    <p>xxx训练、演习等等正在进行</p>
-                    <p style="color: #ff4040">军营所在地出现传染病</p>
-                    <div id="pie1">
-                        <div id="drawPie1"></div>
-                        <span></span>
-                    </div>
-                    <div id="pie2">
-                        <div id="drawPie2"></div>
-                        <span></span>
-                    </div>
-                </div>
-                <div class="menu">
-                    <router-link tag="li" to="/brigade">旅</router-link>
-                    <!--<router-link tag="li" to="/group">团</router-link>-->
-                    <router-link tag="li" to="/camp">营</router-link>
-                    <router-link tag="li" to="/commander">连</router-link>
-                    <router-link tag="li" to="/row">排</router-link>
-                </div>
-                <div class="mask"></div>
-                <div class="animate"></div>
+            <div class="menu">
+                <router-link tag="li" to="/newIndex">旅</router-link>
+                <router-link tag="li" to="/camp">营</router-link>
+                <router-link tag="li" to="/commander">连</router-link>
+                <router-link tag="li" to="/row">排</router-link>
             </div>
-            <div class="rightSide">
-                <div class="box6">
-                    <span>旅同期纵向分析</span>
-                    <div id="echart6"></div>
-                </div>
-                <div class="box7">
-                    <span>技战术水平分析</span>
-                    <div id="echart7"></div>
-                </div>
-                <div class="box8">
-                    <span>健康状态分析</span>
-                    <div id="echart8"></div>
-                </div>
-                <div class="box9">
-                    <span>政治思想分析</span>
-                    <div id="echart9"></div>
-                </div>
-                <div id="echart10">
-                    <p>训练水平分析</p>
-                    <div class="content">
-                        <div class="left">
-                            <li>
-                                <span>90%</span>
-                                <div class="line"></div>
-                            </li>
-                            <li>
-                                <span>95%</span>
-                                <div class="line"></div>
-                            </li>
-                            <li>
-                                <span>90%</span>
-                                <div class="line"></div>
-                            </li>
-                            <li>
-                                <span>95%</span>
-                                <div class="line"></div>
-                            </li>
-                            <li>
-                                <span>90%</span>
-                                <div class="line"></div>
-                            </li>
-                        </div>
-                        <div class="center">
-                            <li>列队</li>
-                            <li>内务</li>
-                            <li>擒敌</li>
-                            <li>战术</li>
-                            <li>体能</li>
-                        </div>
-                        <div class="right">
-                            <li>
-                                <div class="line"></div>
-                                <span>90%</span>
-                            </li>
-                            <li>
-                                <div class="line"></div>
-                                <span>95%</span>
-                            </li>
-                            <li>
-                                <div class="line"></div>
-                                <span>90%</span>
-                            </li>
-                            <li>
-                                <div class="line"></div>
-                                <span>95%</span>
-                            </li>
-                            <li>
-                                <div class="line"></div>
-                                <span>90%</span>
-                            </li>
-                        </div>
+            <div class="mask"></div>
+            <div class="animate"></div>
+        </div>
+        <div class="rightSide">
+            <div class="box6">
+                <span>旅同期纵向分析</span>
+                <div id="echart6"></div>
+            </div>
+            <div class="box7">
+                <span>技战术水平分析</span>
+                <div id="echart7"></div>
+            </div>
+            <div class="box8">
+                <span>健康状态分析</span>
+                <div id="echart8"></div>
+            </div>
+            <div class="box9">
+                <span>政治思想分析</span>
+                <div id="echart9"></div>
+            </div>
+            <div id="echart10">
+                <p>训练水平分析</p>
+                <div class="content">
+                    <div class="left">
+                        <li>
+                            <span>90%</span>
+                            <div class="line"></div>
+                        </li>
+                        <li>
+                            <span>95%</span>
+                            <div class="line"></div>
+                        </li>
+                        <li>
+                            <span>90%</span>
+                            <div class="line"></div>
+                        </li>
+                        <li>
+                            <span>95%</span>
+                            <div class="line"></div>
+                        </li>
+                        <li>
+                            <span>90%</span>
+                            <div class="line"></div>
+                        </li>
+                    </div>
+                    <div class="center">
+                        <li>列队</li>
+                        <li>内务</li>
+                        <li>擒敌</li>
+                        <li>战术</li>
+                        <li>体能</li>
+                    </div>
+                    <div class="right">
+                        <li>
+                            <div class="line"></div>
+                            <span>90%</span>
+                        </li>
+                        <li>
+                            <div class="line"></div>
+                            <span>95%</span>
+                        </li>
+                        <li>
+                            <div class="line"></div>
+                            <span>90%</span>
+                        </li>
+                        <li>
+                            <div class="line"></div>
+                            <span>95%</span>
+                        </li>
+                        <li>
+                            <div class="line"></div>
+                            <span>90%</span>
+                        </li>
                     </div>
                 </div>
             </div>
         </div>
-
+    </div>
     </div>
 </template>
 

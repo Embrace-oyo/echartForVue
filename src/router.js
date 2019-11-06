@@ -8,9 +8,39 @@ export default new Router({
 		{
 			path: '/',
 			name: '旅',
-			redirect: '/brigade'
+			redirect: '/newIndex'
 		},
 		{
+			path: '/newIndex',
+			name: 'newIndex',
+			component: () => import('@/views/version/newIndex.vue')
+		},
+		{
+			path: '/camp',
+			name: 'camp',
+			component: () => import('@/views/version/camp.vue')
+		},
+		{
+			path: '/commander',
+			name: 'commander',
+			component: () => import('@/views/version/commander.vue')
+		},
+		{
+			path: '/row',
+			name: 'row',
+			component: () => import('@/views/version/row.vue')
+		},
+		{
+			path: '/bodys',
+			name: 'bodys',
+			component: () => import('@/views/version/bodys.vue')
+		},
+		{
+			path: '/migration',
+			name: 'migration',
+			component: () => import('@/views/version/migration.vue')
+		},
+/*		{
 			path: '/brigade',
 			name: '旅',
 			component: () => import('@/views/pages/brigade.vue')
@@ -49,17 +79,7 @@ export default new Router({
 			path: '/mapBox',
 			name: 'echarts_mapBox',
 			component: () => import('@/views/pages/mapBox.vue')
-		},
-		{
-			path: '/newIndex',
-			name: 'newIndex',
-			component: () => import('@/views/version/newIndex.vue')
-		},
-		{
-			path: '/body',
-			name: 'body',
-			component: () => import('@/views/version/body.vue')
-		},
+		},*/
 
 	]
 })

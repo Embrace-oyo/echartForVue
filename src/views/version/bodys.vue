@@ -568,6 +568,7 @@
         position: relative;
         .box{
             display: flex;
+						overflow: auto;
             justify-content: space-between;
             align-items: center;
             width:100%;
