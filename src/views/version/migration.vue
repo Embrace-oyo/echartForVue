@@ -1,5 +1,12 @@
 <template>
-    <div class="migration" id="migration"></div>
+		<div class="migration">
+			<div class="title">
+				<div class="left"></div>
+				<span><i></i>士兵全息大数据管理与分析系统</span>
+				<div class="right"></div>
+			</div>
+			<div id="migration"></div>
+		</div>
 </template>
 
 <script>
@@ -547,5 +554,61 @@
     .migration{
         width: 100%;
         height: 100%;
+	      position: relative;
+	    .title{
+		    padding-top: 15px;
+		    height: 50px;
+		    width: 100%;
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+		    position: relative;
+		    span{
+			    font-size: 30px;
+			    font-weight: bold;
+			    font-stretch: normal;
+			    width: 700px;
+			    position: relative;
+			    text-align: center;
+			    i{
+				    display: block;
+				    width: 72px;
+				    height: 67px;
+				    background-image: url('~@/assets/img/bg/junhui.png');
+				    background-size: 100%;
+				    position: absolute;
+				    top: -20px;
+			    }
+		    }
+		    .backButton{
+			    position: absolute;
+			    left: 30px;
+			    top: -20px;
+			    color: #1de9b6;
+			    font-size: 20px;
+			    cursor: pointer;
+		    }
+		    .left{
+			    width: 542px;
+			    display: block;
+			    height: 100%;
+			    background-image: url("~@/assets/img/bg/leftBg.png");
+			    background-size: 100% 100%;
+		    }
+		    .right{
+			    width: 542px;
+			    display: block;
+			    height: 100%;
+			    background-image: url("~@/assets/img/bg/rightBg.png");
+			    background-size: 100% 100%;
+		    }
+	    }
+	    #migration{
+		    width: 100%;
+		    height: 100%;
+		    position: absolute;
+		    left: 0;
+		    top: 0;
+	    }
     }
 </style>

@@ -40,5 +40,10 @@ export default new Router({
 			name: '士兵外出趋势',
 			component: () => import('@/views/version/migration.vue')
 		},
+		{
+				path: '/upLoad',
+				name: '士兵外出趋势',
+				component: () => import('@/views/version/upLoad.vue')
+		},
 	]
 })
