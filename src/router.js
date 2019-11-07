@@ -45,5 +45,10 @@ export default new Router({
 				name: '士兵外出趋势',
 				component: () => import('@/views/version/upLoad.vue')
 		},
+		{
+				path: '/gis',
+				name: 'gis',
+				component: () => import('@/views/version/gis.vue')
+		},
 	]
 })

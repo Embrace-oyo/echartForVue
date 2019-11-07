@@ -134,7 +134,7 @@
 </template>
 
 <script>
-	import shiquJson from '@/assets/json/shiqu.json'
+	import fengdu from '@/assets/json/fengdu.json'
 	export default {
 		name: "commander",
 		methods: {
@@ -1265,176 +1265,149 @@
 				};
 				myChart.setOption(option);
 			},
-			drawMapbox2(){
-				let myChart = this.$echarts.init(document.getElementById("maps"));
-				let geoCoordMap = {
-					'一连': [-74.0066, 40.7135],
-					'一排': [-74.006429,40.714146],
-					'二排': [-74.007768,40.713298],
-					'三排': [-74.008109,40.714607],
-				};
-				let CDCData = [
-					[{
-						name: '一连'
-					}, {
-						name: '一连',
-						value: 100
-					}],
-					[{
-						name: '一连'
-					}, {
-						name: '一排',
-						value: 100
-					}],
-					[{
-						name: '一连'
-					}, {
-						name: '二排',
-						value: 100
-					}],
-					[{
-						name: '一连'
-					}, {
-						name: '三排',
-						value: 100
-					}],
-				];
-				let color = ['#3ed4ff', '#ffa022', '#a6c84c'];
-				let planePath = 'path://M.6,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705';
-				let convertData = function(data) {
-					var res = [];
-					for (var i = 0; i < data.length; i++) {
-						var dataItem = data[i];
-						var fromCoord = geoCoordMap[dataItem[0].name];
-						var toCoord = geoCoordMap[dataItem[1].name];
-						if (fromCoord && toCoord) {
-							res.push(
-									{
-										coords:[fromCoord,toCoord],
-										value: 10,
-									}
-							)
-						}
-					}
-					return res;
-				};
-				let series = [];
-				[['旅', CDCData]].forEach(function(item, i) {
-					series.push(
-							/* 柱子 */
-							{
-								type: 'bar3D',
-								coordinateSystem: 'mapbox',
-								shading: 'lambert',
-								minHeight: 50,
-								barSize: 0.1,
-								silent: true,
-								itemStyle: {
-									color: '#01a6e1',
-									opacity: 1
+			drawMap(){
+						this.$echarts.registerMap('丰都', fengdu);
+						let myChart = this.$echarts.init(document.getElementById('maps'));
+						let geoCoordMap = {
+								'一连': [107.772551,29.833827],
+								'一排': [107.807621,29.894464],
+								'二排': [107.730582,29.998611],
+								'三排': [107.98297,29.728503],
+						};
+						let CDCData = [
+								[{
+										name: '一连'
+								}, {
+										name: '一连',
+										value: 200
+								}],
+								[{
+										name: '一连'
+								}, {
+										name: '一排',
+										value: 200
+								}],
+								[{
+										name: '一连'
+								}, {
+										name: '二排',
+										value: 200
+								}],
+								[{
+										name: '一连'
+								}, {
+										name: '三排',
+										value: 200
+								}],
+						];
+						let planePath = 'path://M.6,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705';
+						let convertData = function(data) {
+								var res = [];
+								for (var i = 0; i < data.length; i++) {
+										var dataItem = data[i];
+										var fromCoord = geoCoordMap[dataItem[0].name];
+										var toCoord = geoCoordMap[dataItem[1].name];
+										if (fromCoord && toCoord) {
+												res.push([{
+														coord: fromCoord
+												}, {
+														coord: toCoord
+												}]);
+										}
+								}
+								return res;
+						};
+						let color = ['#a6c84c'];
+						let series = [];
+						[['一团', CDCData]].forEach(function(item, i) {
+								series.push(
+										{
+												name: item[0],
+												type: 'scatter3D',
+												coordinateSystem: 'geo3D',
+												symbol: 'pin',
+												symbolSize: 30,
+												label:{
+														show: true,
+														formatter:'{b}',
+														distance: 0,
+														textStyle:{
+																color:'#fff',
+																backgroundColor:'rgba(85,255,38, .5)',
+														}
+												},
+												rippleEffect: {
+														brushType: 'stroke',
+														color: 'rgba(58,255,0,0.4)'
+												},
+												itemStyle: {
+														color: 'rgba(85,255,38, .5)',
+														borderColor: 'rgba(85,255,38, .2)',
+														opacity: .5,
+														borderWidth: 1,
+												},
+												animation: true,
+												animationDurationUpdate: 500,
+												animationEasingUpdate: 'cubicOut ',
+												data: item[1].map(function(dataItem) {
+														return {
+																name: dataItem[1].name,
+																value: geoCoordMap[dataItem[1].name].concat([210])
+														};
+												})
+										},
+										{
+												type: 'bar3D',
+												coordinateSystem: 'geo3D',
+												barSize: 0.1,
+												minHeight: 13,
+												itemStyle: {
+														color: 'rgba(85,255,38, 1)',
+														opacity: .5,
+												},
+												shading: 'lambert',
+												data: item[1].map(function(dataItem) {
+														return {
+																name: dataItem[1].name,
+																value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
+														};
+												}),
+										}
+								);
+						});
+						let option = {
+								geo3D:{
+										map: '丰都',
+										boxHeight: 20,
+										regionHeight: 6,
+										instancing: true,
+										itemStyle: {
+												color: 'rgba(56, 141, 120, 0.2)',
+												borderColor: 'rgba(56, 141, 120, 0.1)',
+												opacity: 1,
+												borderWidth: 1,
+										},
+										emphasis: {
+												label: {
+														show: false,
+												},
+												itemStyle: {
+														color: 'rgba(56, 141, 120, 0.5)',
+														borderColor: 'rgba(56, 141, 120, 0.5)',
+														opacity: 1,
+														borderWidth: 1,
+												}
+										},
+										viewControl: {
+												autoRotate: true,
+												distance: 120,
+												alpha: 30,
+										}
 								},
-								label: {
-									show: true,
-									formatter: '{b}',
-									textStyle: {
-										color: '#fff',
-										backgroundColor: 'rgba(0,0,0,0)'
-									}
-								},
-								data: item[1].map(function(dataItem) {
-									return {
-										name: dataItem[1].name,
-										value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value]),
-									};
-								})
-							},
-							/* 坐标点 */
-							/* {
-                   name: item[0],
-                   type: 'scatter3D',
-                   coordinateSystem: 'mapbox',
-                   zlevel: 10,
-                   symbolSize: 20,
-                   rippleEffect: {
-                       brushType: 'stroke'
-                   },
-                   label: {
-                       normal: {
-                           show: true,
-                           position: 'right',
-                           formatter: '{b}'
-                       }
-                   },
-                   blendMode: 'lighter',
-                   itemStyle: {
-                       normal: {
-                           color: color[i]
-                       }
-                   },
-                   data: item[1].map(function(dataItem) {
-                       console.log(geoCoordMap[dataItem[1].name][0], geoCoordMap[dataItem[1].name].concat([dataItem[1].value]));
-                       return {
-                           name: dataItem[1].name,
-                           value: [geoCoordMap[dataItem[1].name][0] + 0.0001, geoCoordMap[dataItem[1].name][1] + 0.0001, dataItem[1].value],
-                       };
-                   })
-               }*/
-					);
-				});
-				let option = {
-					mapbox: {
-						// 海拔的缩放
-						altitudeScale: 1,
-						center: [-74.0066, 40.7135],
-						zoom: 15.3,
-						pitch: 45,
-						bearing: -17.6,
-						style: 'mapbox://styles/mapbox/dark-v10',
-						antialias: true
-					},
-					series: series
-				}
-				myChart.setOption(option);
-				let map = myChart.getModel().getComponent('mapbox3D').getMapbox();
-				map.addControl(new MapboxLanguage({
-					defaultLanguage: 'zh'
-				}));
-				function rotateCamera(timestamp) {
-					map.rotateTo((timestamp / 100) % 360, {duration: 0});
-					requestAnimationFrame(rotateCamera);
-				}
-				map.on('load', function () {
-					rotateCamera(0);
-					var layers = map.getStyle().layers;
-					for (var i = 0; i < layers.length; i++) {
-						if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
-							map.removeLayer(layers[i].id);
+								series: series,
 						}
-					}
-					map.addLayer({
-						'id': '3d-buildings',
-						'source': 'composite',
-						'source-layer': 'building',
-						'filter': ['==', 'extrude', 'true'],
-						'type': 'fill-extrusion',
-						'minzoom': 15,
-						'paint': {
-							'fill-extrusion-color': '#aaa',
-							'fill-extrusion-height': [
-								"interpolate", ["linear"], ["zoom"],
-								15, 0,
-								15.05, ["get", "height"]
-							],
-							'fill-extrusion-base': [
-								"interpolate", ["linear"], ["zoom"],
-								15, 0,
-								15.05, ["get", "min_height"]
-							],
-							'fill-extrusion-opacity': .6
-						}
-					});
-				});
-			},
+						myChart.setOption(option);
+				},
 		},
 		mounted() {
 			this.drawEchart1();
@@ -1448,7 +1421,7 @@
 			this.drawEchart9()
 			this.drawPie1();
 			this.drawPie2();
-			this.drawMapbox2();
+			this.drawMap();
 		}
 	}
 </script>
