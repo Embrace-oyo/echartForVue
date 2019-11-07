@@ -50,5 +50,10 @@ export default new Router({
 				name: 'gis',
 				component: () => import('@/views/version/gis.vue')
 		},
+		{
+				path: '/search',
+				name: 'search',
+				component: () => import('@/views/version/search.vue')
+		},
 	]
 })
