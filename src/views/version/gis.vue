@@ -7,6 +7,7 @@
 		</div>
 		<div class="gis" id="gis" v-show="index === 0"></div>
 		<div class="gis" id="gis2" v-show="index === 1"></div>
+		<router-link tag="button" to="/newIndex" style="left: 4%;top:11%;"> < 返回 </router-link>
 		<button @click="clickMb">场地人员分布</button>
 		<button @click="clickMb" style="top: 20%">人员行动路线</button>
 	</div>

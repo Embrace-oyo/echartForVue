@@ -7,6 +7,7 @@
 		</div>
 		<div class="upLoad">
 			<div class="top">
+				<router-link tag="div" to="/newIndex" class="button">返回</router-link>
 				<div class="button">
 					批量导入
 					<input type="file" multiple="multiple" ref="file">

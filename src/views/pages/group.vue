@@ -1,7 +1,7 @@
 <template>
 	<div class="brigade">
 		<div class="title">
-			<router-link tag="div" to="/brigade" class="backButton">旅 > 二团</router-link>
+			<router-link tag="div" to="/oldBrigade" class="backButton">旅 > 二团</router-link>
 			<div class="left"></div>
 			<span><i></i>士兵全息大数据管理与分析系统</span>
 			<div class="right"></div>
@@ -30,11 +30,11 @@
 					<p style="color: #ff4040">军营所在地出现传染病</p>
 				</div>
 				<div class="menu">
-					<router-link tag="li" to="/brigade">旅</router-link>
-					<router-link tag="li" to="/group">团</router-link>
-					<router-link tag="li" to="/camp">营</router-link>
-					<router-link tag="li" to="/commander">连</router-link>
-					<router-link tag="li" to="/row">排</router-link>
+					<router-link tag="li" to="/oldBrigade">旅</router-link>
+					<router-link tag="li" to="/oldGroup">团</router-link>
+					<router-link tag="li" to="/oldCamp">营</router-link>
+					<router-link tag="li" to="/oldCommander">连</router-link>
+					<router-link tag="li" to="/oldRow">排</router-link>
 				</div>
 			</div>
 			<div class="rightSide">

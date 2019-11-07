@@ -7,6 +7,9 @@
 		</div>
 		<div class="upLoad">
 			<div class="top">
+				<div class="goBack">
+					<router-link tag="span" to="/newIndex">< 返回</router-link>
+				</div>
 				<div class="search">
 					<input type="text" v-model="keyword">
 				</div>
@@ -539,6 +542,28 @@
 				align-items: center;
 				justify-content: flex-end;
 				width: 100%;
+				.goBack{
+					justify-items: flex-start;
+					flex: 1;
+					color: #81939b;
+					font-size: 20px;
+					span{
+						display: block;
+						width: 200px;
+						height: 60px;
+						line-height: 60px;
+						margin-right: 50px;
+						background-color: rgba(56, 141, 120, 0.2);
+						border: 1px solid rgba(56, 141, 120, 0.5);
+						color: #81939b;
+						font-size: 18px;
+						border-radius: 5px;
+						outline: none;
+						position: relative;
+						text-align: center;
+						cursor: pointer;
+					}
+				}
 				.search{
 					width: 400px;
 					height: 60px;
@@ -557,7 +582,7 @@
 						display: block;
 						background-color: #000;
 						border: none;
-						font-size: 14px;
+						font-size: 20px;
 						color: #fff;
 					}
 				}

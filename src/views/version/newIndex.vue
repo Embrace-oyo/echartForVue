@@ -1,5 +1,10 @@
 <template>
     <div class="brigade">
+        <div class="cai">
+            <router-link tag="span" to="/upLoad">导入</router-link>
+            <router-link tag="span" to="/search">搜索</router-link>
+            <router-link tag="span" to="/list">水平列表</router-link>
+        </div>
         <div class="title">
             <div class="left"></div>
             <span><i></i>士兵全息大数据管理与分析系统</span>
@@ -46,6 +51,7 @@
                 </div>
             </div>
             <div class="menu">
+                <router-link tag="li" to="/migration">士兵外出趋势</router-link>
                 <router-link tag="li" to="/newIndex">旅</router-link>
                 <router-link tag="li" to="/camp">营</router-link>
                 <router-link tag="li" to="/commander">连</router-link>

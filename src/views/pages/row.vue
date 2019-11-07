@@ -1,7 +1,7 @@
 <template>
 	<div class="brigade">
 		<div class="title">
-			<router-link tag="div" to="/commander" class="backButton"> < 二排</router-link>
+			<router-link tag="div" to="/oldCommander" class="backButton"> < 二排</router-link>
 			<div class="left"></div>
 			<span><i></i>士兵全息大数据管理与分析系统</span>
 			<div class="right"></div>
@@ -37,11 +37,11 @@
 					<p>一班技战术考核正在进行</p>
 				</div>
 				<div class="menu">
-					<router-link tag="li" to="/brigade">旅</router-link>
-					<router-link tag="li" to="/group">团</router-link>
-					<router-link tag="li" to="/camp">营</router-link>
-					<router-link tag="li" to="/commander">连</router-link>
-					<router-link tag="li" to="/row">排</router-link>
+					<router-link tag="li" to="/oldBrigade">旅</router-link>
+					<router-link tag="li" to="/oldGroup">团</router-link>
+					<router-link tag="li" to="/oldCamp">营</router-link>
+					<router-link tag="li" to="/oldCommander">连</router-link>
+					<router-link tag="li" to="/oldRow">排</router-link>
 				</div>
 			</div>
 			<div class="rightSide">

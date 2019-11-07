@@ -2,7 +2,10 @@
     <div class="body">
         <div class="box">
             <div class="left">
-	             <h2>士兵数据可视化分析</h2>
+	             <div class="nameAndButton">
+								 <router-link tag="div" class="button" to="/newIndex"> < 返回 </router-link>
+								 <h2>李世林</h2>
+							 </div>
                 <div class="row1">
                     <div class="bodyPoint">
                         <i class="icon1"></i>
@@ -55,8 +58,8 @@
 	              <div class="row3">
 		              <li>
 			              <div class="showTxt">
-				              <span>左侧肾功能数据</span>
-				              <span>肾功能全线排查仪器</span>
+				              <span>战术能力综合分析</span>
+				              <span>功能全线排查仪器</span>
 				              <span><i>STANDARD</i><i>POOR</i><i>TIME</i></span>
 			              </div>
 			              <span class="add">+</span>
@@ -64,8 +67,8 @@
 		              </li>
 		              <li>
 			              <div class="showTxt">
-				              <span>左侧肾功能数据</span>
-				              <span>肾功能全线排查仪器</span>
+				              <span>身体综合素质分析</span>
+				              <span>功能全线排查仪器</span>
 				              <span><i>STANDARD</i><i>POOR</i><i>TIME</i></span>
 			              </div>
 			              <span class="add">+</span>
@@ -73,8 +76,8 @@
 		              </li>
 		              <li>
 			              <div class="showTxt">
-				              <span>左侧肾功能数据</span>
-				              <span>肾功能全线排查仪器</span>
+				              <span>全天候作战能力分析</span>
+				              <span>功能全线排查仪器</span>
 				              <span><i>STANDARD</i><i>POOR</i><i>TIME</i></span>
 			              </div>
 			              <span class="jian">-</span>
@@ -112,7 +115,9 @@
 		              </div>
 	              </div>
             </div>
-            <div class="center"></div>
+            <div class="center">
+							<router-link tag="div" class="button" to="/gis">士兵行动轨迹</router-link>
+						</div>
             <div class="right">
 	            <div class="info">
 		            <div class="time"><i></i><span class="hour">{{hour}}:{{minute}}</span><span class="sen">:{{second}}</span></div>
@@ -582,17 +587,54 @@
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center center;
+								display: flex;
+								justify-content: center;
+								align-items: flex-end;
+								.button{
+									display: block;
+									width: 120px;
+									height: 30px;
+									line-height: 30px;
+									background-color: rgba(58, 255, 111, 0.46);
+									text-align: center;
+									padding: 10px;
+									border: 1px solid #3aff6f;
+									margin-bottom: 10px;
+									cursor: pointer;
+									border-radius: 5px;
+									font-size: 15px;
+									font-weight: bold;
+								}
             }
             .left{
                 width: 700px;
                 height: 100%;
                 margin-left: 50px;
-		            h2{
-			            float: left;
-			            margin: 20px 0;
-			            font-size: 50px;
-			            font-weight: bold;
-		            }
+								.nameAndButton{
+									display: flex;
+									align-items: center;
+									h2{
+										float: left;
+										margin: 0;
+										font-size: 50px;
+										font-weight: bold;
+										margin-left: 50px;
+									}
+									.button{
+										display: block;
+										width: 120px;
+										height: 30px;
+										line-height: 30px;
+										background-color: rgba(58, 255, 111, 0.46);
+										text-align: center;
+										padding: 10px;
+										border: 1px solid #3aff6f;
+										cursor: pointer;
+										border-radius: 5px;
+										font-size: 15px;
+										font-weight: bold;
+									}
+								}
                 .row1{
                     width: 100%;
                     border-bottom: 1px solid #42474a;

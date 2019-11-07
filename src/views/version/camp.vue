@@ -1,7 +1,12 @@
 <template>
 	<div class="brigade">
+		<div class="cai">
+			<router-link tag="span" to="/upLoad">导入</router-link>
+			<router-link tag="span" to="/search">搜索</router-link>
+			<router-link tag="span" to="/list">水平列表</router-link>
+		</div>
 		<div class="title">
-			<router-link tag="div" to="/group" class="backButton">旅 > 一营</router-link>
+			<router-link tag="div" to="/newIndex" class="backButton">旅 > 一营</router-link>
 			<div class="left"></div>
 			<span><i></i>士兵全息大数据管理与分析系统</span>
 			<div class="right"></div>

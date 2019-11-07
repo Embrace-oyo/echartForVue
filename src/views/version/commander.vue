@@ -1,5 +1,10 @@
 <template>
 	<div class="brigade">
+		<div class="cai">
+			<router-link tag="span" to="/upLoad">导入</router-link>
+			<router-link tag="span" to="/search">搜索</router-link>
+			<router-link tag="span" to="/list">水平列表</router-link>
+		</div>
 		<div class="title">
 			<router-link tag="div" to="/camp" class="backButton">一营 > 一连</router-link>
 			<div class="left"></div>

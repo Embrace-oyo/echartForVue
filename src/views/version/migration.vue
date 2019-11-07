@@ -1,5 +1,8 @@
 <template>
 		<div class="migration">
+			<div class="goBack">
+				<router-link tag="span" to="/newIndex"> < 返回</router-link>
+			</div>
 			<div class="title">
 				<div class="left"></div>
 				<span><i></i>士兵全息大数据管理与分析系统</span>
@@ -555,6 +558,32 @@
         width: 100%;
         height: 100%;
 	      position: relative;
+			.goBack{
+				position: absolute;
+				top: 50px;
+				left: 30px;
+				justify-items: flex-start;
+				flex: 1;
+				color: #81939b;
+				font-size: 20px;
+				z-index: 9999;
+				span{
+					display: block;
+					width: 200px;
+					height: 60px;
+					line-height: 60px;
+					margin-right: 50px;
+					background-color: rgba(56, 141, 120, 0.2);
+					border: 1px solid rgba(56, 141, 120, 0.5);
+					color: #81939b;
+					font-size: 18px;
+					border-radius: 5px;
+					outline: none;
+					position: relative;
+					text-align: center;
+					cursor: pointer;
+				}
+			}
 	    .title{
 		    padding-top: 15px;
 		    height: 50px;

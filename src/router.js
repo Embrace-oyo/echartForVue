@@ -8,8 +8,9 @@ export default new Router({
 		{
 			path: '/',
 			name: '旅',
-			redirect: '/newIndex'
+			redirect: '/oldBrigade'
 		},
+		/** 新 **/
 		{
 			path: '/newIndex',
 			name: '首页',
@@ -55,5 +56,43 @@ export default new Router({
 				name: 'search',
 				component: () => import('@/views/version/search.vue')
 		},
+		{
+			path: '/list',
+			name: '列表',
+			component: () => import('@/views/version/list.vue')
+		},
+		/** 新 **/
+		/** 旧 **/
+		{
+			path: '/oldBrigade',
+			name: '首页',
+			component: () => import('@/views/pages/brigade.vue')
+		},
+		{
+			path: '/oldCamp',
+			name: '营',
+			component: () => import('@/views/pages/camp.vue')
+		},
+		{
+			path: '/oldGroup',
+			name: '团',
+			component: () => import('@/views/pages/group.vue')
+		},
+		{
+			path: '/oldCommander',
+			name: '连',
+			component: () => import('@/views/pages/commander.vue')
+		},
+		{
+			path: '/oldRow',
+			name: '排',
+			component: () => import('@/views/pages/row.vue')
+		},
+		{
+			path: '/details',
+			name: '士兵详情',
+			component: () => import('@/views/pages/details.vue')
+		},
+		/** 旧 **/
 	]
 })

@@ -29,11 +29,11 @@
 					<p style="color: #ff4040">军营所在地出现传染病</p>
 				</div>
 				<div class="menu">
-					<router-link tag="li" to="/brigade">旅</router-link>
-					<router-link tag="li" to="/group">团</router-link>
-					<router-link tag="li" to="/camp">营</router-link>
-					<router-link tag="li" to="/commander">连</router-link>
-					<router-link tag="li" to="/row">排</router-link>
+					<router-link tag="li" to="/oldBrigade">旅</router-link>
+					<router-link tag="li" to="/oldGroup">团</router-link>
+					<router-link tag="li" to="/oldCamp">营</router-link>
+					<router-link tag="li" to="/oldCommander">连</router-link>
+					<router-link tag="li" to="/oldRow">排</router-link>
 				</div>
 			</div>
 			<div class="rightSide">
