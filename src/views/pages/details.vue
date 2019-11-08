@@ -2,7 +2,7 @@
     <div class="details">
         <div class="details-left">
             <div class="details-padding">
-                <router-link tag="div" to="/row" class="backButton">< 二班</router-link>
+                <router-link tag="div" to="/oldRow" class="backButton">< 二班</router-link>
                 <div class="class-frame">
                     <div class="class">一班</div>
                     <div class="class">二班</div>
