@@ -1,7 +1,7 @@
 <template>
 		<div class="migration">
 			<div class="goBack">
-				<router-link tag="span" to="/newIndex"> < 返回</router-link>
+				<router-link tag="span" to="/newIndex">返回</router-link>
 			</div>
 			<div class="title">
 				<div class="left"></div>

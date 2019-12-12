@@ -25,7 +25,7 @@
 				</div>
 				<div id="maps">
 					<i class="icon"></i>
-					<router-link tag="li" to="/details" v-for="(item, index) in 28">
+					<router-link tag="li" to="/oldPeople" v-for="(item, index) in 28">
 						<span>{{index % 3 === 0 ? '张某某' : (index % 3 === 1 ? '李世林' : '孙悦')}}</span>
 						<span>{{index % 3 === 0 ? '炮兵' : (index % 3 === 1 ? '通讯兵' : '侦查兵')}}</span>
 						<span>{{index % 3 === 0 ? '一班' : (index % 3 === 1 ? '二班' : '三班')}}</span>

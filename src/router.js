@@ -16,7 +16,7 @@ const routes = [
 				component: () => import('@/views/pages/brigade.vue')
 		},
 		/** 旧 **/
-/*		{
+		{
 			path: '/oldBrigade',
 			name: '首页',
 			component: () => import('@/views/pages/brigade.vue')
@@ -47,10 +47,10 @@ const routes = [
 			component: () => import('@/views/pages/details.vue')
 		},
 		{
-		path: '/details',
-		name: '士兵详情',
-		component: () => import('@/views/pages/details.vue')
-		},*/
+			path: '/oldPeople',
+			name: '士兵详情',
+			component: () => import('@/views/pages/peopleInfo.vue')
+		},
 		/** 旧 **/
 	/** 新 **/
 	{
