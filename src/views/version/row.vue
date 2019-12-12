@@ -13,6 +13,19 @@
 		</div>
 		<div class="content">
 			<div class="leftSide">
+				<div class="honorBox">
+					<span>荣誉墙</span>
+					<div class="honor">
+						<p>荣誉室的负责人: xxx</p>
+						<p>连续稳定300天无事故</p>
+						<p>授予xxx荣誉称号</p>
+						<p>参加xxxx比武，夺得7个单项第一</p>
+						<p>获取爱军精武标兵</p>
+						<p>获取优秀指挥军官</p>
+						<p>荣立二等功2次</p>
+						<p>荣立三等功3次</p>
+					</div>
+				</div>
 				<div class="box1">
 					<span>全军横向分析</span>
 					<div id="echart1"></div>
@@ -38,7 +51,7 @@
 				<div class="toogle"></div>
 				<div id="maps">
 					<i class="icon"></i>
-					<router-link tag="li" to="/bodys" v-for="(item, index) in 28" :key="index">
+					<router-link tag="li" to="/people" v-for="(item, index) in 28" :key="index">
 						<span>{{index % 3 === 0 ? '张某某' : (index % 3 === 1 ? '李世林' : '孙悦')}}</span>
 						<span>{{index % 3 === 0 ? '炮兵' : (index % 3 === 1 ? '通讯兵' : '侦查兵')}}</span>
 						<span>{{index % 3 === 0 ? '一班' : (index % 3 === 1 ? '二班' : '三班')}}</span>
@@ -46,9 +59,11 @@
 				</div>
 				<div class="infoBox">
 					<i></i>
-					<img src="~@/assets/img/animate2.png" alt="">
-					<p>xxx训练、演习等等正在进行</p>
-					<p style="color: #ff4040">军营所在地出现传染病</p>
+					<div class="suggest">
+		                <span>
+			                休假建议人数：20人
+		                </span>
+					</div>
 					<div id="pie1">
 						<div id="drawPie1"></div>
 						<span></span>
@@ -1163,120 +1178,137 @@
 				}, 2000)
 			},
 			drawPie1(){
-				let myChart = this.$echarts.init(document.getElementById("drawPie1"));
-				let option = {
-					title : {
-						text: '总人数',
-						subtext: '7000',
-						textStyle:{
-							color: '#81939b',
-							fontSize: 16
-						},
-						subtextStyle: {
-							color: '#81939b',
-							fontSize: 16
-						},
-						x:'center',
-						y: '35%'
-					},
-					tooltip : {
-						trigger: 'item',
-						formatter: "{a} <br/>{b} : {c} ({d}%)"
-					},
-					series: [
-						{
-							name:'兵种人数',
-							type:'pie',
-							radius: ['50%', '70%'],
-							avoidLabelOverlap: false,
-							color:['rgb(91, 230, 235)', 'rgb(4, 143, 246)', 'rgb(215, 106, 0)', '#62ff85'],
-							label: {
-								color: '#81939b',
-								fontSize: 14,
-								formatter: '{b}\n{d}%',
-								rich: {
-									a: {
-										color: "#fff",
-										fontSize: 14,
-										lineHeight: 30
-									},
-								}
-							},
-							itemStyle: {
-								emphasis: {
-									shadowBlur: 10,
-									shadowOffsetX: 0,
-									shadowColor: 'rgba(0, 0, 0, 0.5)',
-								}
-							},
-							data:[
-								{value:1750, name:'炮兵'},
-								{value:1750, name:'勤务兵'},
-								{value:1750, name:'通讯兵'},
-								{value:1750, name:'侦查兵'},
-							]
-						}
-					]
-				};
-				myChart.setOption(option);
-			},
+						let myChart = this.$echarts.init(document.getElementById("drawPie1"));
+						let option = {
+								title : {
+										text: '总人数：7000',
+										textStyle:{
+												color: '#81939b',
+												fontSize: 16
+										},
+										x:'center',
+										bottom: 0
+								},
+								tooltip : {
+										trigger: 'item',
+										formatter: "{a} <br/>{b} : {c} ({d}%)"
+								},
+								visualMap: {
+										show: false,
+										min: 80,
+										max: 600,
+										inRange: {
+												colorLightness: [0, 1]
+										}
+								},
+								series : [
+										{
+												name:'访问来源',
+												type:'pie',
+												radius : '55%',
+												center: ['50%', '50%'],
+												data:[
+														{value: 335, name:'在位人数'},
+														{value: 310, name:'病号人数'},
+														{value: 274, name:'不在位人数'},
+														{value: 235, name:'士官人数'},
+														{value: 400, name:'集训人数'},
+														{value: 269, name:'技术军官人数'},
+														{value: 300, name:'初级士官人数'},
+												].sort(function (a, b) { return a.value - b.value; }),
+												roseType: 'radius',
+												label: {
+														normal: {
+																textStyle: {
+																		color: '#81939b'
+																}
+														}
+												},
+												labelLine: {
+														normal: {
+																lineStyle: {
+																		color: '#81939b'
+																},
+																smooth: 0.2,
+																length: 10,
+																length2: 20
+														}
+												},
+												itemStyle: {
+														normal: {
+																color: '#2abb9b',
+																shadowBlur: 200,
+																shadowColor: 'rgba(0, 0, 0, 0.5)'
+														}
+												},
+												
+												animationType: 'scale',
+												animationEasing: 'elasticOut',
+												animationDelay: function (idx) {
+														return Math.random() * 200;
+												}
+										}
+								]
+						};
+						myChart.setOption(option);
+				},
 			drawPie2(){
-				let myChart = this.$echarts.init(document.getElementById("drawPie2"));
-				let option = {
-					title : {
-						text: '出勤率',
-						subtext: '96%',
-						textStyle:{
-							color: '#81939b',
-							fontSize: 16
-						},
-						subtextStyle: {
-							color: '#81939b',
-							fontSize: 16
-						},
-						x:'center',
-						y: '35%'
-					},
-					tooltip : {
-						trigger: 'item',
-						formatter: "{b} : {c} ({d}%)"
-					},
-					series: [
-						{
-							name:'兵种人数',
-							type:'pie',
-							radius: ['50%', '70%'],
-							avoidLabelOverlap: false,
-							color:['rgb(91, 230, 235)', 'rgb(4, 143, 246)', 'rgb(215, 106, 0)', '#62ff85'],
-							label: {
-								fontSize: 14,
-								color: '#81939b',
-								formatter: '{b}\n{d}%',
-								rich: {
-									a: {
-										color: "#fff",
-										fontSize: 14,
-										lineHeight: 30
-									},
-								}
-							},
-							itemStyle: {
-								emphasis: {
-									shadowBlur: 10,
-									shadowOffsetX: 0,
-									shadowColor: 'rgba(0, 0, 0, 0.5)',
-								}
-							},
-							data:[
-								{value: 32, name:'出差'},
-								{value: 32, name:'休假'},
-								{value: 32, name:'病假'},
-								{value: 32, name:'事假'},
-							]
-						}
-					]
-				};
-				myChart.setOption(option);
+						let myChart = this.$echarts.init(document.getElementById("drawPie2"));
+						let option = {
+								title : {
+										text: '休假情况',
+										textStyle:{
+												color: '#81939b',
+												fontSize: 16
+										},
+										subtextStyle: {
+												color: '#81939b',
+												fontSize: 16
+										},
+										x:'center',
+										bottom: 0
+								},
+								tooltip : {
+										trigger: 'item',
+										formatter: "{b} : {c} ({d}%)"
+								},
+								series: [
+										{
+												name:'人数',
+												type:'pie',
+												radius : '55%',
+												center: ['50%', '50%'],
+												avoidLabelOverlap: false,
+												color:['rgba(91, 230, 235, 1)', 'rgba(91, 230, 235, .8)', 'rgba(91, 230, 235, .6)', 'rgba(91, 230, 235, .4)'],
+												label: {
+														fontSize: 14,
+														color: '#81939b',
+														formatter: '{b}\n{d}%',
+														rich: {
+																a: {
+																		color: "#fff",
+																		fontSize: 14,
+																		lineHeight: 30
+																},
+														}
+												},
+												itemStyle: {
+														emphasis: {
+																shadowBlur: 10,
+																shadowOffsetX: 0,
+																shadowColor: 'rgba(0, 0, 0, 0.5)',
+														}
+												},
+												data:[
+														{value: 87, name:'在位士兵'},
+														{value: 55, name:'在位士官'},
+														{value: 20, name:'病假人数'},
+														{value: 32, name:'事假人数'},
+												]
+										}
+								]
+						};
+						myChart.setOption(option);
 			},
 			drawMap(){
 				let myChart = this.$echarts.init(document.getElementById("maps"));

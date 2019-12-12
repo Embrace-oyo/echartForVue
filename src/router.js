@@ -1,69 +1,22 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 
-Vue.use(Router);
+Vue.use(VueRouter);
 
-export default new Router({
-    routes: [
+
+const routes = [
 		{
 			path: '/',
 			name: '旅',
-			redirect: '/oldBrigade'
-		},
-		/** 新 **/
-		{
-			path: '/newIndex',
-			name: '首页',
-			component: () => import('@/views/version/newIndex.vue')
+			redirect: '/newIndex'
 		},
 		{
-			path: '/camp',
-			name: '营',
-			component: () => import('@/views/version/camp.vue')
+				path: '/oldBrigade',
+				name: '首页',
+				component: () => import('@/views/pages/brigade.vue')
 		},
-		{
-			path: '/commander',
-			name: '排',
-			component: () => import('@/views/version/commander.vue')
-		},
-		{
-			path: '/row',
-			name: '班',
-			component: () => import('@/views/version/row.vue')
-		},
-		{
-			path: '/bodys',
-			name: '个人信息',
-			component: () => import('@/views/version/bodys.vue')
-		},
-		{
-			path: '/migration',
-			name: '士兵外出趋势',
-			component: () => import('@/views/version/migration.vue')
-		},
-		{
-				path: '/upLoad',
-				name: '士兵外出趋势',
-				component: () => import('@/views/version/upLoad.vue')
-		},
-		{
-				path: '/gis',
-				name: 'gis',
-				component: () => import('@/views/version/gis.vue')
-		},
-		{
-				path: '/search',
-				name: 'search',
-				component: () => import('@/views/version/search.vue')
-		},
-		{
-			path: '/list',
-			name: '列表',
-			component: () => import('@/views/version/list.vue')
-		},
-		/** 新 **/
 		/** 旧 **/
-		{
+/*		{
 			path: '/oldBrigade',
 			name: '首页',
 			component: () => import('@/views/pages/brigade.vue')
@@ -93,6 +46,85 @@ export default new Router({
 			name: '士兵详情',
 			component: () => import('@/views/pages/details.vue')
 		},
+		{
+		path: '/details',
+		name: '士兵详情',
+		component: () => import('@/views/pages/details.vue')
+		},*/
 		/** 旧 **/
+	/** 新 **/
+	{
+		path: '/newIndex',
+		name: '首页',
+		component: () => import('@/views/version/newIndex.vue')
+	},
+	{
+		path: '/camp',
+		name: '营',
+		component: () => import('@/views/version/camp.vue')
+	},
+	{
+		path: '/commander',
+		name: '排',
+		component: () => import('@/views/version/commander.vue')
+	},
+	{
+		path: '/row',
+		name: '班',
+		component: () => import('@/views/version/row.vue')
+	},
+	{
+		path: '/bodys',
+		name: '个人信息',
+		component: () => import('@/views/version/bodys.vue')
+	},
+	{
+		path: '/people',
+		name: '个人信息',
+		component: () => import('@/views/version/peopleInfo.vue')
+	},
+	{
+		path: '/migration',
+		name: '士兵外出趋势',
+		component: () => import('@/views/version/migration.vue')
+	},
+	{
+		path: '/upLoad',
+		name: '士兵外出趋势',
+		component: () => import('@/views/version/upLoad.vue')
+	},
+	{
+		path: '/gis',
+		name: 'gis',
+		component: () => import('@/views/version/gis.vue')
+	},
+	{
+		path: '/search',
+		name: 'search',
+		component: () => import('@/views/version/search.vue')
+	},
+	{
+		path: '/list',
+		name: '列表',
+		component: () => import('@/views/version/list.vue')
+	},
+	{
+		path: '/rank',
+		name: '排名',
+		component: () => import('@/views/version/rank.vue')
+	},
+	{
+		path: '/analysis',
+		name: '分析',
+		component: () => import('@/views/version/analysis.vue')
+	},
+	/** 新 **/
 	]
+
+const router = new VueRouter({
+	mode: 'history',
+	base: process.env.BASE_URL,
+	routes
 })
+
+export default router

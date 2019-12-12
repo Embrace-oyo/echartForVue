@@ -4,10 +4,9 @@
  * @createTime 2019/10/15 0015 11:24
  */
 module.exports = {
-    //publicPath: process.env.NODE_ENV === 'production' ? '/strongDemo/' : '/',
-    //outputDir: 'strongDemo',
+    publicPath: process.env.NODE_ENV === 'production' ? '/soldierNew/' : '/',
     devServer: {
-        port:"8081"
+        port:"8080"
     },
 	css: {
 		loaderOptions: {

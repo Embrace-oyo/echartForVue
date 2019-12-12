@@ -13,6 +13,19 @@
 		</div>
 		<div class="content">
 			<div class="leftSide">
+				<div class="honorBox">
+					<span>荣誉墙</span>
+					<div class="honor">
+						<p>荣誉室的负责人: xxx</p>
+						<p>连续稳定300天无事故</p>
+						<p>授予xxx荣誉称号</p>
+						<p>参加xxxx比武，夺得7个单项第一</p>
+						<p>获取爱军精武标兵</p>
+						<p>获取优秀指挥军官</p>
+						<p>荣立二等功2次</p>
+						<p>荣立三等功3次</p>
+					</div>
+				</div>
 				<div class="box1">
 					<span>全军横向分析</span>
 					<div id="echart1"></div>
@@ -39,9 +52,11 @@
 				<div id="maps"></div>
 				<div class="infoBox">
 					<i></i>
-					<img src="~@/assets/img/animate2.png" alt="">
-					<p>xxx训练、演习等等正在进行</p>
-					<p style="color: #ff4040">军营所在地出现传染病</p>
+					<div class="suggest">
+		                <span>
+			                休假建议人数：20人
+		                </span>
+					</div>
 					<div id="pie1">
 						<div id="drawPie1"></div>
 						<span></span>
@@ -52,13 +67,12 @@
 					</div>
 				</div>
 				<div class="menu">
+					<router-link tag="li" to="/migration">士兵外出趋势</router-link>
 					<router-link tag="li" to="/newIndex">旅</router-link>
 					<router-link tag="li" to="/camp">营</router-link>
 					<router-link tag="li" to="/commander">连</router-link>
 					<router-link tag="li" to="/row">排</router-link>
 				</div>
-				<div class="mask"></div>
-				<div class="animate"></div>
 			</div>
 			<div class="rightSide">
 				<div class="box6">
@@ -139,7 +153,7 @@
 </template>
 
 <script>
-	import shiquJson from '@/assets/json/shiqu.json'
+	import cd from '@/assets/json/cd.json';
 	export default {
 		name: "camp",
 		methods: {
@@ -1155,278 +1169,315 @@
 				}, 2000)
 			},
 			drawPie1(){
-				let myChart = this.$echarts.init(document.getElementById("drawPie1"));
-				let option = {
-					title : {
-						text: '总人数',
-						subtext: '7000',
-						textStyle:{
-							color: '#81939b',
-							fontSize: 16
-						},
-						subtextStyle: {
-							color: '#81939b',
-							fontSize: 16
-						},
-						x:'center',
-						y: '35%'
-					},
-					tooltip : {
-						trigger: 'item',
-						formatter: "{a} <br/>{b} : {c} ({d}%)"
-					},
-					series: [
-						{
-							name:'兵种人数',
-							type:'pie',
-							radius: ['50%', '70%'],
-							avoidLabelOverlap: false,
-							color:['rgb(91, 230, 235)', 'rgb(4, 143, 246)', 'rgb(215, 106, 0)', '#62ff85'],
-							label: {
-								color: '#81939b',
-								fontSize: 14,
-								formatter: '{b}\n{d}%',
-								rich: {
-									a: {
-										color: "#fff",
-										fontSize: 14,
-										lineHeight: 30
-									},
-								}
-							},
-							itemStyle: {
-								emphasis: {
-									shadowBlur: 10,
-									shadowOffsetX: 0,
-									shadowColor: 'rgba(0, 0, 0, 0.5)',
-								}
-							},
-							data:[
-								{value:1750, name:'炮兵'},
-								{value:1750, name:'勤务兵'},
-								{value:1750, name:'通讯兵'},
-								{value:1750, name:'侦查兵'},
-							]
-						}
-					]
-				};
-				myChart.setOption(option);
-			},
+						let myChart = this.$echarts.init(document.getElementById("drawPie1"));
+						let option = {
+								title : {
+										text: '总人数：7000',
+										textStyle:{
+												color: '#81939b',
+												fontSize: 16
+										},
+										x:'center',
+										bottom: 0
+								},
+								tooltip : {
+										trigger: 'item',
+										formatter: "{a} <br/>{b} : {c} ({d}%)"
+								},
+								visualMap: {
+										show: false,
+										min: 80,
+										max: 600,
+										inRange: {
+												colorLightness: [0, 1]
+										}
+								},
+								series : [
+										{
+												name:'访问来源',
+												type:'pie',
+												radius : '55%',
+												center: ['50%', '50%'],
+												data:[
+														{value: 335, name:'在位人数'},
+														{value: 310, name:'病号人数'},
+														{value: 274, name:'不在位人数'},
+														{value: 235, name:'士官人数'},
+														{value: 400, name:'集训人数'},
+														{value: 269, name:'技术军官人数'},
+														{value: 300, name:'初级士官人数'},
+												].sort(function (a, b) { return a.value - b.value; }),
+												roseType: 'radius',
+												label: {
+														normal: {
+																textStyle: {
+																		color: '#81939b'
+																}
+														}
+												},
+												labelLine: {
+														normal: {
+																lineStyle: {
+																		color: '#81939b'
+																},
+																smooth: 0.2,
+																length: 10,
+																length2: 20
+														}
+												},
+												itemStyle: {
+														normal: {
+																color: '#2abb9b',
+																shadowBlur: 200,
+																shadowColor: 'rgba(0, 0, 0, 0.5)'
+														}
+												},
+												
+												animationType: 'scale',
+												animationEasing: 'elasticOut',
+												animationDelay: function (idx) {
+														return Math.random() * 200;
+												}
+										}
+								]
+						};
+						myChart.setOption(option);
+				},
 			drawPie2(){
-				let myChart = this.$echarts.init(document.getElementById("drawPie2"));
-				let option = {
-					title : {
-						text: '出勤率',
-						subtext: '96%',
-						textStyle:{
-							color: '#81939b',
-							fontSize: 16
-						},
-						subtextStyle: {
-							color: '#81939b',
-							fontSize: 16
-						},
-						x:'center',
-						y: '35%'
-					},
-					tooltip : {
-						trigger: 'item',
-						formatter: "{b} : {c} ({d}%)"
-					},
-					series: [
-						{
-							name:'兵种人数',
-							type:'pie',
-							radius: ['50%', '70%'],
-							avoidLabelOverlap: false,
-							color:['rgb(91, 230, 235)', 'rgb(4, 143, 246)', 'rgb(215, 106, 0)', '#62ff85'],
-							label: {
-								fontSize: 14,
-								color: '#81939b',
-								formatter: '{b}\n{d}%',
-								rich: {
-									a: {
-										color: "#fff",
-										fontSize: 14,
-										lineHeight: 30
-									},
-								}
-							},
-							itemStyle: {
-								emphasis: {
-									shadowBlur: 10,
-									shadowOffsetX: 0,
-									shadowColor: 'rgba(0, 0, 0, 0.5)',
-								}
-							},
-							data:[
-								{value: 32, name:'出差'},
-								{value: 32, name:'休假'},
-								{value: 32, name:'病假'},
-								{value: 32, name:'事假'},
-							]
-						}
-					]
-				};
-				myChart.setOption(option);
-			},
+						let myChart = this.$echarts.init(document.getElementById("drawPie2"));
+						let option = {
+								title : {
+										text: '休假情况',
+										textStyle:{
+												color: '#81939b',
+												fontSize: 16
+										},
+										subtextStyle: {
+												color: '#81939b',
+												fontSize: 16
+										},
+										x:'center',
+										bottom: 0
+								},
+								tooltip : {
+										trigger: 'item',
+										formatter: "{b} : {c} ({d}%)"
+								},
+								series: [
+										{
+												name:'人数',
+												type:'pie',
+												radius : '55%',
+												center: ['50%', '50%'],
+												avoidLabelOverlap: false,
+												color:['rgba(91, 230, 235, 1)', 'rgba(91, 230, 235, .8)', 'rgba(91, 230, 235, .6)', 'rgba(91, 230, 235, .4)'],
+												label: {
+														fontSize: 14,
+														color: '#81939b',
+														formatter: '{b}\n{d}%',
+														rich: {
+																a: {
+																		color: "#fff",
+																		fontSize: 14,
+																		lineHeight: 30
+																},
+														}
+												},
+												itemStyle: {
+														emphasis: {
+																shadowBlur: 10,
+																shadowOffsetX: 0,
+																shadowColor: 'rgba(0, 0, 0, 0.5)',
+														}
+												},
+												data:[
+														{value: 87, name:'在位士兵'},
+														{value: 55, name:'在位士官'},
+														{value: 20, name:'病假人数'},
+														{value: 32, name:'事假人数'},
+												]
+										}
+								]
+						};
+						myChart.setOption(option);
+				},
 			drawMap(){
-				this.$echarts.registerMap('石渠', shiquJson);
-				let myChart = this.$echarts.init(document.getElementById('maps'));
-				let geoCoordMap = {
-					'一营': [98.13075,33.003384],
-					'一连': [97.92378,33.993723],
-					'二连': [97.51444,32.871512],
-					'三连': [98.719463,33.173746],
-					'指挥班': [98.719463,33.173746],
-					'后勤保障班': [98.903436,32.669442],
-				};
-				let CDCData = [
-					[{
-						name: '一营'
-					}, {
-						name: '一营',
-						value: 200
-					}],
-					[{
-						name: '一营'
-					}, {
-						name: '一连',
-						value: 200
-					}],
-					[{
-						name: '一营'
-					}, {
-						name: '二连',
-						value: 200
-					}],
-					[{
-						name: '一营'
-					}, {
-						name: '三连',
-						value: 200
-					}],
-					[{
-						name: '一营'
-					}, {
-						name: '指挥班',
-						value: 200
-					}],
-					[{
-						name: '一营'
-					}, {
-						name: '后勤保障班',
-						value: 200
-					}],
-				];
-				let planePath = 'path://M.6,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705';
-				let convertData = function(data) {
-					var res = [];
-					for (var i = 0; i < data.length; i++) {
-						var dataItem = data[i];
-						var fromCoord = geoCoordMap[dataItem[0].name];
-						var toCoord = geoCoordMap[dataItem[1].name];
-						if (fromCoord && toCoord) {
-							res.push([{
-								coord: fromCoord
-							}, {
-								coord: toCoord
-							}]);
-						}
-					}
-					return res;
-				};
-				let color = ['#a6c84c'];
-				let series = [];
-				[['一团', CDCData]].forEach(function(item, i) {
-					series.push(
-							{
-								name: item[0],
-								type: 'scatter3D',
-								coordinateSystem: 'geo3D',
-								symbol: 'pin',
-								symbolSize: 30,
-								label:{
-									show: true,
-									formatter:'{b}',
-									distance: 0,
-									textStyle:{
-										color:'#fff',
-										backgroundColor:'rgba(85,255,38, .5)',
-									}
+						this.$echarts.registerMap('成都', cd);
+						let myChart = this.$echarts.init(document.getElementById('maps'));
+						let geoCoordMap = {
+								'一营': [103.479684,30.416896],
+								'一连': [103.43829,30.466215],
+								'二连': [103.394021,30.457748],
+								'三连': [103.463586,30.360073],
+						};
+						let CDCData = [
+								[{
+										name: '一营'
+								}, {
+										name: '一营',
+										value: 200
+								}],
+								[{
+										name: '一营'
+								}, {
+										name: '一连',
+										value: 100
+								}],
+								[{
+										name: '一营'
+								}, {
+										name: '二连',
+										value: 100
+								}],
+								[{
+										name: '一营'
+								}, {
+										name: '三连',
+										value: 100
+								}],
+						];
+						let planePath = 'path://M.6,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705';
+						let convertData = function(data) {
+								var res = [];
+								for (var i = 0; i < data.length; i++) {
+										var dataItem = data[i];
+										var fromCoord = geoCoordMap[dataItem[0].name];
+										var toCoord = geoCoordMap[dataItem[1].name];
+										if (fromCoord && toCoord) {
+												res.push([{
+														coord: fromCoord
+												}, {
+														coord: toCoord
+												}]);
+										}
+								}
+								return res;
+						};
+						let color = ['#3ed4ff', '#ffa022', '#a6c84c'];
+						let series = [];
+						[['77旅', CDCData]].forEach(function(item, i) {
+								series.push(
+										{
+												name: item[0],
+												type: 'lines',
+												zlevel: 1,
+												effect: {
+														show: true,
+														period: 6,
+														trailLength: 0.7,
+														color: '#fff',
+														symbolSize: 3
+												},
+												lineStyle: {
+														normal: {
+																color: '#1de9b6',
+																width: .5,
+																opacity: 0.5,
+																curveness: 0.2
+														}
+												},
+												data: convertData(item[1])
+										},
+										{
+												name: item[0],
+												type: 'lines',
+												zlevel: 2,
+												effect: {
+														show: true,
+														period: 6,
+														trailLength: 0,
+														symbol: planePath,
+														symbolSize: 15
+												},
+												lineStyle: {
+														normal: {
+																color: '#1de9b6',
+																width: 0,
+																opacity: 0.5,
+																curveness: 0.2
+														}
+												},
+												data: convertData(item[1])},
+										{
+												name: item[0],
+												type: 'effectScatter',
+												coordinateSystem: 'geo',
+												zlevel: 2,
+												rippleEffect: {
+														brushType: 'stroke'
+												},
+												label: {
+														normal: {
+																show: true,
+																position: 'right',
+																formatter: '{b}'
+														}
+												},
+												symbolSize: function(val) {
+														return val[2] / 8;
+												},
+												itemStyle: {
+														normal: {
+																color: '#1de9b6',
+																shadowBlur: 10,
+																shadowColor: '#1de9b6'
+														}
+												},
+												data: item[1].map(function(dataItem) {
+														return {
+																name: dataItem[1].name,
+																value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
+														};
+												})
+										}
+								);
+						});
+						let option = {
+								tooltip: {
+										show: false,
+										trigger: 'item'
 								},
-								rippleEffect: {
-									brushType: 'stroke',
-									color: 'rgba(58,255,0,0.4)'
+								geo: {
+										map: '成都',
+										zoom: 4,
+										center: [103.479684,30.416896],
+										label: {
+												emphasis: {
+														show: false
+												}
+										},
+										roam: true,
+										itemStyle: {
+												borderColor: 'rgba(56, 141, 120, 0.5)',
+												borderWidth: 1,
+												areaColor: {
+														type: 'radial',
+														x: 0.5,
+														y: 0.5,
+														r: 0.8,
+														colorStops: [{
+																offset: 0,
+																color: 'rgba(56, 141, 120, 0)' // 0% 处的颜色
+														}, {
+																offset: 1,
+																color: 'rgba(56, 141, 120, 0.2)' // 100% 处的颜色
+														}],
+														globalCoord: false // 缺省为 false
+												},
+												shadowColor: 'rgba(56, 141, 120, 1)',
+												shadowOffsetX: -2,
+												shadowOffsetY: 2,
+												shadowBlur: 10,
+												emphasis: {
+														areaColor: 'rgba(56, 141, 120, .5)',
+														borderWidth: 0
+												}
+										}
 								},
-								itemStyle: {
-									color: 'rgba(85,255,38, .5)',
-									borderColor: 'rgba(85,255,38, .2)',
-									opacity: .5,
-									borderWidth: 1,
-								},
-								animation: true,
-								animationDurationUpdate: 500,
-								animationEasingUpdate: 'cubicOut ',
-								data: item[1].map(function(dataItem) {
-									return {
-										name: dataItem[1].name,
-										value: geoCoordMap[dataItem[1].name].concat([210])
-									};
-								})
-							},
-							{
-								type: 'bar3D',
-								coordinateSystem: 'geo3D',
-								barSize: 0.1,
-								minHeight: 13,
-								itemStyle: {
-									color: 'rgba(85,255,38, 1)',
-									opacity: .5,
-								},
-								shading: 'lambert',
-								data: item[1].map(function(dataItem) {
-									return {
-										name: dataItem[1].name,
-										value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
-									};
-								}),
-							}
-					);
-				});
-				let option = {
-					geo3D:{
-						map: '石渠',
-						boxHeight: 20,
-						regionHeight: 6,
-						instancing: true,
-						itemStyle: {
-							color: 'rgba(56, 141, 120, 0.2)',
-							borderColor: 'rgba(56, 141, 120, 0.1)',
-							opacity: 1,
-							borderWidth: 1,
-						},
-						emphasis: {
-							label: {
-								show: false,
-							},
-							itemStyle: {
-								color: 'rgba(56, 141, 120, 0.5)',
-								borderColor: 'rgba(56, 141, 120, 0.5)',
-								opacity: 1,
-								borderWidth: 1,
-							}
-						},
-						viewControl: {
-							autoRotate: true,
-							distance: 120,
-							alpha: 30,
-						}
-					},
-					series: series,
-				}
-				myChart.setOption(option);
-			},
+								series: series
+						};
+						myChart.setOption(option);
+				},
 		},
 		mounted() {
 			this.drawEchart1();

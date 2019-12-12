@@ -22,9 +22,9 @@
       width: 80px;
       height: 30px;
       line-height: 30px;
-      background-color: rgba(58, 255, 111, 0.46);
+      background-color: rgba(56, 141, 120, 0.2);
       text-align: center;
-      border: 1px solid #3aff6f;
+      border: 1px solid rgba(56, 141, 120, 1);
       margin-bottom: 10px;
       cursor: pointer;
       border-radius: 5px;
@@ -95,9 +95,40 @@
       border: solid 1px rgba(56, 141, 120, .5);
       overflow: auto;
       background-color: rgba(56, 141, 120, 0.2);
+      .honorBox{
+        width: 100%;
+        min-height: 300px;
+        float: left;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        span{
+          font-size: 20px;
+          text-align: center;
+          color: #81939b;
+          font-weight: bold;
+          width: 100%;
+          display: block;
+          position: absolute;
+        }
+        .honor{
+          width: 100%;
+          min-height: 300px;
+          margin-top: 35px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          p{
+            font-size: 16px;
+            color: #81939b;
+            padding: 0;
+            margin: 10px;
+          }
+        }
+      }
       .box1, .box2, .box3, .box4, .box5{
         width: 100%;
         height: 300px;
+        float: left;
         margin-top: 10px;
         span{
           font-size: 20px;
@@ -134,14 +165,29 @@
         background-size: cover;
         z-index: 10;
       }
-      #pie1{
+      .suggest{
         position: absolute;
-        width: 439px;
-        height: 136px;
+        width: 250px;
+        height: 100%;
         border: none;
         background-color: rgba(0, 0, 0, 0);
         top: 0;
-        left: 25%;
+        left: 50%;
+        margin-left: -100px;
+        z-index: 2;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        color: #81939b;
+      }
+      #pie1{
+        position: absolute;
+        width: 439px;
+        height: 100%;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        top: 0;
+        left: 0;
         z-index: 2;
         #drawPie1{
           width: 100%;
@@ -153,11 +199,11 @@
       #pie2{
         position: absolute;
         width: 439px;
-        height: 136px;
+        height: 100%;
         border: none;
         background-color: rgba(0, 0, 0, 0);
         top: 0;
-        left: 50%;
+        right: 0;
         z-index: 2;
         #drawPie2{
           width: 100%;
@@ -169,7 +215,7 @@
       #maps{
         position: relative;
         z-index: 1;
-        background-image: url("~@/assets/img/mapBg.jpg");
+       /* background-image: url("~@/assets/img/mapBg.jpg");*/
         background-size: 100% 605px;
         background-repeat: no-repeat;
         width: 100%;
@@ -190,7 +236,7 @@
       }
       .infoBox{
         width: 100%;
-        height: 136px;
+        height: 250px;
         border: 1px solid rgba(56, 141, 120, 0.5);
         background-color: rgba(56, 141, 120, 0.2);
         position: absolute;
