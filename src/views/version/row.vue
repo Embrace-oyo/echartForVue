@@ -18,13 +18,13 @@
 						<span>荣誉墙</span>
 						<div class="honor">
 							<p><span class="tit">荣誉室负责人：</span><span class="cot">张某某</span></p>
-							<p><span class="tit">无事故：</span><span class="cot">300天</span></p>
+							<p><span class="tit">连续稳定无事故：</span><span class="cot">300天</span></p>
 							<p><span class="tit">授予荣誉：</span><span class="cot">"xxxx"荣誉称号</span></p>
-							<p><span class="tit">授予荣誉：</span><span class="cot">爱军精武标兵</span></p>
-							<p><span class="tit">获得荣誉：</span><span class="cot">优秀指挥军官</span></p>
+							<p><span class="tit">爱军精武标兵：</span><span class="cot">5人</span></p>
+							<p><span class="tit">优秀指挥官：</span><span class="cot">3人</span></p>
 							<p><span class="tit">一等功：</span><span class="cot">0次</span></p>
 							<p><span class="tit">二等功：</span><span class="cot">2次</span></p>
-							<p><span class="tit">三等公：</span><span class="cot">3次</span></p>
+							<p><span class="tit">三等功：</span><span class="cot">3次</span></p>
 						</div>
 					</div>
 				</div>
@@ -37,7 +37,7 @@
 						<span>获奖月份分布</span>
 						<div id="echart2"></div>
 					</div>
-					<div class="box3">
+<!--					<div class="box3">
 						<span>健康状态分析</span>
 						<div id="echart3"></div>
 					</div>
@@ -48,7 +48,7 @@
 					<div class="box5">
 						<span>训练水平分析</span>
 						<div id="echart5"></div>
-					</div>
+					</div>-->
 				</div>
 			</div>
 			<div class="centerSide">
@@ -1696,9 +1696,9 @@
 		mounted() {
 			this.drawEchart1();
 			this.drawEchart2();
-			this.drawEchart3();
+			/*this.drawEchart3();
 			this.drawEchart4();
-			this.drawEchart5();
+			this.drawEchart5();*/
 			this.drawEchart6()
 			this.drawEchart7()
 			this.drawEchart8()
