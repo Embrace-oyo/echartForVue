@@ -92,12 +92,12 @@
       height: 100%;
       left: 12px;
       top: -12px;
-      overflow: auto;
       .sideOne{
         border: solid 1px rgba(56, 141, 120, .5);
         background-color: rgba(56, 141, 120, 0.2);
         float: left;
         width: calc(100% - 2px);
+        height: 270px;
         .honorBox{
           width: 100%;
           float: left;
@@ -112,7 +112,6 @@
           }
           .honor{
             width: 100%;
-            min-height: 100px;
             margin-top: 15px;
             display: flex;
             flex-direction: column;
@@ -142,7 +141,9 @@
         background-color: rgba(56, 141, 120, 0.2);
         float: left;
         width: calc(100% - 2px);
-        margin-top: 20px;
+        height: calc(100vh - 365px);
+        margin-top: 10px;
+        overflow: auto;
         .box1, .box2, .box3, .box4, .box5{
           width: 100%;
           height: 300px;
@@ -155,7 +156,7 @@
             font-weight: bold;
             width: 100%;
             display: block;
-            position: absolute;
+            margin-bottom: -25px;
           }
         }
       }
