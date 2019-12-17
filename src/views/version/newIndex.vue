@@ -12,39 +12,43 @@
         </div>
         <div class="content">
 	        <div class="leftSide">
-			        <div class="honorBox">
-				        <span>荣誉墙</span>
-				        <div class="honor">
-					        <p>荣誉室的负责人: xxx</p>
-					        <p>连续稳定300天无事故</p>
-					        <p>授予xxx荣誉称号</p>
-					        <p>参加xxxx比武，夺得7个单项第一</p>
-					        <p>获取爱军精武标兵</p>
-					        <p>获取优秀指挥军官</p>
-					        <p>荣立二等功2次</p>
-					        <p>荣立三等功3次</p>
-				        </div>
-			        </div>
-	            <div class="box1">
-	                <span>全军横向分析</span>
-	                <div id="echart1"></div>
-	            </div>
-	            <div class="box2">
-	                <span>技战术水平分析</span>
-	                <div id="echart2"></div>
-	            </div>
-	            <div class="box3">
-	                <span>健康状态分析</span>
-	                <div id="echart3"></div>
-	            </div>
-	            <div class="box4">
-	                <span>政治思想分析</span>
-	                <div id="echart4"></div>
-	            </div>
-	            <div class="box5">
-	                <span>训练水平分析</span>
-	                <div id="echart5"></div>
-	            </div>
+							<div class="sideOne">
+								<div class="honorBox">
+									<span>荣誉墙</span>
+									<div class="honor">
+										<p><span class="tit">荣誉室负责人：</span><span class="cot">张某某</span></p>
+										<p><span class="tit">无事故：</span><span class="cot">300天</span></p>
+										<p><span class="tit">授予荣誉：</span><span class="cot">"xxxx"荣誉称号</span></p>
+										<p><span class="tit">授予荣誉：</span><span class="cot">爱军精武标兵</span></p>
+										<p><span class="tit">获得荣誉：</span><span class="cot">优秀指挥军官</span></p>
+										<p><span class="tit">一等功：</span><span class="cot">0次</span></p>
+										<p><span class="tit">二等功：</span><span class="cot">2次</span></p>
+										<p><span class="tit">三等公：</span><span class="cot">3次</span></p>
+									</div>
+								</div>
+							</div>
+							<div class="sideTwo">
+								<div class="box1">
+									<span>参加"xxx比武"，获得七个单项第一</span>
+									<div id="echart1"></div>
+								</div>
+								<div class="box2">
+									<span>获奖月份分布</span>
+									<div id="echart2"></div>
+								</div>
+								<div class="box3">
+									<span>健康状态分析</span>
+									<div id="echart3"></div>
+								</div>
+								<div class="box4">
+									<span>政治思想分析</span>
+									<div id="echart4"></div>
+								</div>
+								<div class="box5">
+									<span>训练水平分析</span>
+									<div id="echart5"></div>
+								</div>
+							</div>
 	        </div>
 	        <div class="centerSide">
 	            <div class="toogle"></div>
@@ -182,11 +186,13 @@
                             }
                         },
                         indicator: [
-                            { name: '技战术', max: 100},
-                            { name: '健康状态', max: 100},
-                            { name: '政治思想', max: 100},
-                            { name: '文化素养', max: 100},
-                            { name: '试炼水平', max: 100},
+                            { name: '俯卧撑', max: 100},
+                            { name: '三公里跑', max: 100},
+                            { name: '军事三公里跑', max: 100},
+                            { name: '单杠', max: 100},
+                            { name: '打靶', max: 100},
+                            { name: '双杠', max: 100},
+                            { name: '仰卧起坐', max: 100},
                         ],
                         axisLine: {
                             lineStyle: {
@@ -214,14 +220,14 @@
                     series: [{
                         name: '全军横向分析',
                         type: 'radar',
-                        color: ['rgb(0, 186, 255)', '#2abb9b'],
+                        color: ['#2abb9b'],
                         lineStyle: {
                             width: 1
                         },
                         symbol:'none',
                         data : [
-                            {
-                                value : [85, 70, 69, 90, 88],
+                           /* {
+                                value : [100, 100, 100, 100, 100, 100, 100],
                                 areaStyle: {
                                     normal: {
                                         opacity: 0.5,
@@ -237,9 +243,9 @@
                                         ])
                                     }
                                 }
-                            },
+                            },*/
                             {
-                                value : [73, 59, 89, 78, 95],
+                                value : [100, 100, 100, 100, 100, 100, 100],
                                 zIndex: 10,
                                 areaStyle: {
                                     normal: {
@@ -261,21 +267,6 @@
                     }]
                 };
                 myChart.setOption(option);
-                let data0 = option.series[0].data[0].value;
-                let data1 = option.series[0].data[1].value;
-                setInterval(() => {
-                    let arr0 = [];
-                    let arr1 = [];
-                    for(let i = 0; i < data0.length; i++){
-                        arr0.push(Math.round(Math.random() * 100))
-                    }
-                    for(let i = 0; i < data1.length; i++){
-                        arr1.push(Math.round(Math.random() * 100))
-                    }
-                    option.series[0].data[0].value = arr0;
-                    option.series[0].data[1].value = arr1;
-                    myChart.setOption(option);
-                }, 3000)
             },
             drawEchart2(){
                 let myChart = this.$echarts.init(document.getElementById("echart2"));
@@ -299,7 +290,7 @@
                     },
                     xAxis: {
                         type: 'category',
-                        data: ['体能', '射击', '障碍', '技术', '通讯'],
+                        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月',],
                         axisLine: {
                             show: true,
                             lineStyle: {
@@ -349,7 +340,7 @@
                     series: [
                         {
                             type: 'bar',
-                            data: [80, 85, 95, 79, 88, 93],
+														data: [1, 2, 3, 1, 2, 3, 4, 5, 2, 8, 1, 2],
                             z: 10,
                             barGap: '-100%',
                             barCategoryGap: '70%',
@@ -368,7 +359,7 @@
                         },
                         {
                             type: 'line',
-                            data: [80, 85, 95, 79, 88, 93],
+                            data: [1, 2, 3, 1, 2, 3, 4, 5, 2, 8, 1, 2],
                             z: 11,
                             barGap: '-100%',
                             barCategoryGap: '70%',
@@ -381,7 +372,7 @@
                         },
                         {
                             type: 'bar',
-                            data: [100, 100, 100, 100, 100, 100],
+                            data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
                             barGap: '-100%',
                             z: 5,
                             barCategoryGap: '70%',
@@ -393,22 +384,6 @@
                     ]
                 };
                 myChart.setOption(option);
-                let data0 = option.series[0].data;
-                let data1 = option.series[1].data;
-                let axisData = ['体能', '射击', '障碍', '技术', '通讯']
-                let num = 4;
-                setInterval(() => {
-                    data0.pop();
-                    data1.pop();
-                    let round = Math.round(Math.random() * 100);
-                    data0.unshift(round);
-                    data1.unshift(round);
-                    option.xAxis.data.pop();
-                    option.xAxis.data.unshift(axisData[num]);
-                    num--;
-                    if(num < 0) num = 4;
-                    myChart.setOption(option);
-                }, 2000)
             },
             drawEchart3(){
                 let myChart = this.$echarts.init(document.getElementById("echart3"));
