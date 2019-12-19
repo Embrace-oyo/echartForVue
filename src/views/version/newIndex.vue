@@ -55,19 +55,19 @@
 	            <div id="maps"></div>
 	            <div class="infoBox">
 	                <i></i>
-	                <div class="suggest">
+	                <!--<div class="suggest">
 		                <span>
-			                休假建议人数：20人
+			               
 		                </span>
-	                </div>
+	                </div>-->
 	                <div id="pie1">
 	                    <div id="drawPie1"></div>
 	                    <span></span>
 	                </div>
-	                <div id="pie2">
+	                <router-link tag="div" to="/vacation" id="pie2">
 	                    <div id="drawPie2"></div>
 	                    <span></span>
-	                </div>
+	                </router-link>
 	            </div>
 	            <div class="menu">
 	                <router-link tag="li" to="/migration">士兵外出趋势</router-link>
@@ -1146,7 +1146,7 @@
                 let myChart = this.$echarts.init(document.getElementById("drawPie1"));
                 let option = {
 										title : {
-												text: '总人数：7000',
+												text: '总人数：2000',
 												textStyle:{
 														color: '#00a0e9',
 														fontSize: 16

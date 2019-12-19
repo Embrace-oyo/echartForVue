@@ -8,15 +8,97 @@ const routes = [
 		{
 			path: '/',
 			name: '旅',
-			redirect: '/newIndex'
+			redirect: '/login'
+		},
+		/** 新 **/
+		{
+				path: '/login',
+				name: '首页',
+				component: () => import('@/views/version/login.vue')
+		},
+		{
+				path: '/newIndex',
+				name: '首页',
+				component: () => import('@/views/version/newIndex.vue')
+		},
+		{
+				path: '/camp',
+				name: '营',
+				component: () => import('@/views/version/camp.vue')
+		},
+		{
+				path: '/commander',
+				name: '排',
+				component: () => import('@/views/version/commander.vue')
+		},
+		{
+				path: '/row',
+				name: '班',
+				component: () => import('@/views/version/row.vue')
+		},
+		{
+				path: '/bodys',
+				name: '个人信息',
+				component: () => import('@/views/version/bodys.vue')
+		},
+		{
+				path: '/people',
+				name: '个人信息',
+				component: () => import('@/views/version/peopleInfo.vue')
+		},
+		{
+				path: '/migration',
+				name: '士兵外出趋势',
+				component: () => import('@/views/version/migration.vue')
+		},
+		{
+				path: '/upLoad',
+				name: '士兵外出趋势',
+				component: () => import('@/views/version/upLoad.vue')
+		},
+		{
+				path: '/gis',
+				name: 'gis',
+				component: () => import('@/views/version/gis.vue')
+		},
+		{
+				path: '/search',
+				name: 'search',
+				component: () => import('@/views/version/search.vue')
+		},
+		{
+				path: '/list',
+				name: '列表',
+				component: () => import('@/views/version/list.vue')
+		},
+		{
+				path: '/rank',
+				name: '排名',
+				component: () => import('@/views/version/rank.vue')
+		},
+		{
+				path: '/analysis',
+				name: '分析',
+				component: () => import('@/views/version/analysis.vue')
+		},
+		{
+				path: '/vacation',
+				name: '休假情况',
+				component: () => import('@/views/version/vacation.vue')
+		},
+		{
+				path: '/physical',
+				name: '休假情况',
+				component: () => import('@/views/version/physical.vue')
 		},
 		{
 				path: '/oldBrigade',
 				name: '首页',
 				component: () => import('@/views/pages/brigade.vue')
 		},
+		/** 新 **/
 		/** 旧 **/
-		{
+/*		{
 			path: '/oldBrigade',
 			name: '首页',
 			component: () => import('@/views/pages/brigade.vue')
@@ -50,75 +132,9 @@ const routes = [
 			path: '/oldPeople',
 			name: '士兵详情',
 			component: () => import('@/views/pages/peopleInfo.vue')
-		},
+		},*/
 		/** 旧 **/
-	/** 新 **/
-	{
-		path: '/newIndex',
-		name: '首页',
-		component: () => import('@/views/version/newIndex.vue')
-	},
-	{
-		path: '/camp',
-		name: '营',
-		component: () => import('@/views/version/camp.vue')
-	},
-	{
-		path: '/commander',
-		name: '排',
-		component: () => import('@/views/version/commander.vue')
-	},
-	{
-		path: '/row',
-		name: '班',
-		component: () => import('@/views/version/row.vue')
-	},
-	{
-		path: '/bodys',
-		name: '个人信息',
-		component: () => import('@/views/version/bodys.vue')
-	},
-	{
-		path: '/people',
-		name: '个人信息',
-		component: () => import('@/views/version/peopleInfo.vue')
-	},
-	{
-		path: '/migration',
-		name: '士兵外出趋势',
-		component: () => import('@/views/version/migration.vue')
-	},
-	{
-		path: '/upLoad',
-		name: '士兵外出趋势',
-		component: () => import('@/views/version/upLoad.vue')
-	},
-	{
-		path: '/gis',
-		name: 'gis',
-		component: () => import('@/views/version/gis.vue')
-	},
-	{
-		path: '/search',
-		name: 'search',
-		component: () => import('@/views/version/search.vue')
-	},
-	{
-		path: '/list',
-		name: '列表',
-		component: () => import('@/views/version/list.vue')
-	},
-	{
-		path: '/rank',
-		name: '排名',
-		component: () => import('@/views/version/rank.vue')
-	},
-	{
-		path: '/analysis',
-		name: '分析',
-		component: () => import('@/views/version/analysis.vue')
-	},
-	/** 新 **/
+	
 	]
 
 const router = new VueRouter({

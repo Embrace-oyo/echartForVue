@@ -8,7 +8,11 @@
 		<div class="upLoad">
 			<div class="top">
 				<div class="goBack">
-					<router-link tag="span" to="/newIndex">返回</router-link>
+					<router-link tag="span" to="/row">返回</router-link>
+					<router-link tag="span" to="/gis">活动轨迹gis</router-link>
+					<router-link tag="span" to="/analysis">统计分析</router-link>
+					<router-link tag="span" to="/rank">训练排名</router-link>
+					<router-link tag="span" to="/physical">体能分析</router-link>
 				</div>
 			</div>
 			<div class="contentBox">
@@ -733,12 +737,14 @@
 				align-items: center;
 				justify-content: flex-end;
 				width: 100%;
+				margin: 10px 0;
 				.goBack{
 					justify-items: flex-start;
 					flex: 1;
 					color: #81939b;
 					font-size: 20px;
 					span{
+						float: left;
 						display: block;
 						width: 200px;
 						height: 60px;
