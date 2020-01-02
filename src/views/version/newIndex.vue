@@ -4,6 +4,7 @@
             <router-link tag="span" to="/upLoad">导入</router-link>
             <router-link tag="span" to="/search">搜索</router-link>
             <router-link tag="span" to="/list">水平列表</router-link>
+            <router-link tag="span" to="/hls">第三方接入</router-link>
         </div>
         <div class="title">
             <div class="left"></div>

@@ -96,6 +96,11 @@ const routes = [
 				name: '首页',
 				component: () => import('@/views/pages/brigade.vue')
 		},
+		{
+				path: '/hls',
+				name: 'hls',
+				component: () => import('@/views/version/HLS.vue')
+		},
 		/** 新 **/
 		/** 旧 **/
 /*		{
