@@ -28,10 +28,10 @@
             return {
                 videoUrl: [
                     'http://hls.open.ys7.com/openlive/f01018a141094b7fa138b9d0b856507b.m3u8',
-                    'https://videos-3.earthcam.com/fecnetwork/4017timessquare.flv/chunklist_w1274620080.m3u8',
-                    'https://videos-3.earthcam.com/fecnetwork/9974.flv/chunklist_w1746629090.m3u8',
-                    'https://videos-3.earthcam.com/fecnetwork/15559.flv/chunklist_w315444557.m3u8',
-                    'https://videos-3.earthcam.com/fecnetwork/hdtimes10.flv/chunklist_w776411616.m3u8',
+                    'http://stream.swamiji.tv/YogaIPTV/smil:YogaStream.smil/chunklist_w1606422831_b400000.m3u8',
+                    'http://uni8rtmp.tulix.tv:1935/shalomtv-pc/smil:shalomtv.smil/master.m3u8',
+                    'http://edge1.il.kab.tv/rtplive/tv66-heb-high.stream/playlist.m3u8',
+                    'http://media.smc-host.com:1935/cycnow.com/cyc2/chunklist_w884806316.m3u8',
                 ]
             }
         },
